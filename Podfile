@@ -20,5 +20,6 @@ target 'reviews' do
 end
 
 target 'reviewsTests' do
-
+  realm
+  reactive_cocoa
 end

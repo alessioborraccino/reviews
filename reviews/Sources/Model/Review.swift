@@ -35,6 +35,10 @@ class Review : Object, Mappable {
         mapping(map)
     }
 
+    convenience init(id: Int) {
+        self.init()
+        self.reviewID = id
+    }
     override static func primaryKey() -> String? {
         return "reviewID"
     }

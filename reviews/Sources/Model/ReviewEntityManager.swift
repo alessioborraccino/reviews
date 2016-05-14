@@ -7,11 +7,26 @@
 //
 
 import Foundation
+import RealmSwift
 
-protocol ReviewEntityManagerType : EntityManagerType {
+protocol ReviewEntityManagerType {
     func all() -> [Review]
-    func saveContentsOf(entities: [Review]) -> Bool 
+    func deleteReviewsNotContainedIn(reviews: [Review]) throws
+    func saveContentsOf(entities: [Review]) throws
 }
-class ReviewEntityManager : ReviewEntityManagerType {
-    typealias EntityType = Review 
+
+class ReviewEntityManager : ReviewEntityManagerType, EntityManagerType {
+    typealias EntityType = Review
+
+    var realm: Realm  {
+        return Data.defaultRealm
+    }
+
+    func deleteReviewsNotContainedIn(reviews: [Review]) throws {
+        let obsoleteReviews = all().filter { cachedReview in
+            return !reviews.contains(cachedReview)
+        }
+        try deleteContentsOf(obsoleteReviews)
+    }
+
 }

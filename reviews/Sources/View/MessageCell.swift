@@ -39,7 +39,6 @@ class MessageCell : UITableViewCell, ReusableType {
         contentView.addSubview(containerView)
         containerView.addSubview(messageLabel)
         containerView.addSubview(activityIndicatorView)
-        
         setDefaultConstraints()
     }
     
@@ -65,7 +64,7 @@ class MessageCell : UITableViewCell, ReusableType {
         }
     }
 
-    func bind<T: MessageCellViewModelType>(messageCellViewModel viewModel: T) {
+    func bind(messageCellViewModel viewModel: MessageCellViewModelType) {
         if viewModel.isLoading {
             messageLabel.text = ""
             activityIndicatorView.startAnimating()

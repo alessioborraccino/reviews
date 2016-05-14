@@ -35,7 +35,6 @@ enum MessageCellState : CustomStringConvertible, Equatable {
 }
 
 func ==(lhs: MessageCellState, rhs: MessageCellState) -> Bool {
-
     switch (lhs, rhs) {
 
     case (.WaitingToLoad, .WaitingToLoad),

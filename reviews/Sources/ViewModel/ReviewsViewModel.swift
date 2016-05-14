@@ -19,8 +19,8 @@ protocol ReviewsViewModelType {
     var reviewsCount : Int { get }
     func loadReviews()
 
-    func reviewCellViewModelForIndex(index: Int) -> ReviewCellViewModel
-    func messageCellViewModel() -> MessageCellViewModel
+    func reviewCellViewModelForIndex(index: Int) -> ReviewCellViewModelType
+    func messageCellViewModel() -> MessageCellViewModelType
 }
 
 class ReviewsViewModel : ReviewsViewModelType {
@@ -33,8 +33,10 @@ class ReviewsViewModel : ReviewsViewModelType {
 
     // MARK: Dependencies
 
-    private let reviewEntityManager = ReviewEntityManager()
-    private let getYourGuideAPI = ReviewAPI()
+    private let reviewEntityManager : ReviewEntityManagerType
+    private let reviewAPI : ReviewAPIType
+    private let reviewCellViewModelFactory : ReviewCellViewModelFactoryType
+    private let messageCellViewModelFactory : MessageCellViewModelFactoryType
 
     // MARK: Model Properties
 
@@ -42,9 +44,16 @@ class ReviewsViewModel : ReviewsViewModelType {
     private var messageCellState = MutableProperty<MessageCellState>(.WaitingToLoad)
     private var currentReviewPages = 0
 
-    init(reviewEntityManager: ReviewEntityManager,
-         reviewAPI: ReviewAPIType) {
-        configureBehavior()
+    init(reviewEntityManager: ReviewEntityManager = ReviewEntityManager(),
+         reviewAPI: ReviewAPIType = ReviewAPI(),
+         reviewCellViewModelFactory: ReviewCellViewModelFactoryType = ReviewCellViewModelFactory(),
+         messageCellViewModelFactory: MessageCellViewModelFactoryType = MessageCellViewModelFactory()
+        ) {
+        self.reviewEntityManager = reviewEntityManager
+        self.reviewAPI = reviewAPI
+        self.reviewCellViewModelFactory = reviewCellViewModelFactory
+        self.messageCellViewModelFactory = messageCellViewModelFactory
+        bindPageNumberToNumberOfReviews()
     }
 
     var reviewsCount : Int {
@@ -94,17 +103,16 @@ class ReviewsViewModel : ReviewsViewModelType {
         let areShownReviewsCached = self.messageCellState.value == .Cached
         loadNextReviews(refreshExistingReviews: areShownReviewsCached)
     }
-    func reviewCellViewModelForIndex(index: Int) -> ReviewCellViewModel {
-        return ReviewCellViewModel(review: reviews.value[index])
+    func reviewCellViewModelForIndex(index: Int) -> ReviewCellViewModelType {
+        return reviewCellViewModelFactory.model(review: reviews.value[index])
     }
-    func messageCellViewModel() -> MessageCellViewModel {
-        let viewModel =  MessageCellViewModel(state: messageCellState.value)
-        return viewModel
+    func messageCellViewModel() -> MessageCellViewModelType {
+        return messageCellViewModelFactory.model(state: messageCellState.value)
     }
 
     // MARK: Private Methods
 
-    private func configureBehavior() {
+    private func bindPageNumberToNumberOfReviews() {
         reviews.producer.startWithNext { [unowned self] (reviews) in
             self.currentReviewPages = reviews.count / Constants.reviewsPerPage
         }
@@ -121,11 +129,11 @@ class ReviewsViewModel : ReviewsViewModelType {
 
         messageCellState.value = .Loading
 
-        getYourGuideAPI.reviews(count: count, pageNumber: pageNumber).start { [unowned self] event in
+        reviewAPI.reviews(count: count, pageNumber: pageNumber).start { [unowned self] event in
             switch event {
             case .Next(let reviews):
-                self.updateModelsWithNewReviews(reviews, atPageNumber: pageNumber)
-                self.cacheReviews(reviews)
+                let isFirstPage = pageNumber == 0
+                self.updateModelsWithNewReviews(reviews, isFirstPage: isFirstPage)
             case .Failed(let error):
                 self.updateModelsWithError(error)
             default:
@@ -134,9 +142,9 @@ class ReviewsViewModel : ReviewsViewModelType {
         }
     }
 
-    private func updateModelsWithNewReviews(reviews: [Review], atPageNumber pageNumber: Int) {
+    private func updateModelsWithNewReviews(reviews: [Review], isFirstPage: Bool) {
         var totalReviews : [Review]
-        if pageNumber == 0 {
+        if isFirstPage {
             totalReviews = []
         } else {
             totalReviews = self.reviews.value
@@ -145,17 +153,24 @@ class ReviewsViewModel : ReviewsViewModelType {
 
         self.reviews.value = totalReviews
         self.messageCellState.value = .WaitingToLoad
+        cacheReviews(totalReviews)
     }
 
     private func cacheReviews(reviews: [Review]) {
         dispatch_async(dispatch_get_main_queue(), { [unowned self] in
-            self.reviewEntityManager.saveContentsOf(reviews)
+            do {
+                //TODO better caching
+                try self.reviewEntityManager.saveContentsOf(reviews)
+                try self.reviewEntityManager.deleteReviewsNotContainedIn(reviews)
+            } catch {
+                print("error")
+            }
         })
     }
 
     private func updateModelsWithError(error: ReviewAPIError) {
         switch error {
-        case .NetworkFailed:
+        case .NetworkFailed, .ParsingFailed:
             dispatch_async(dispatch_get_main_queue(), { [unowned self] in
                 let cachedReviews = self.reviewEntityManager.all()
                 if cachedReviews.isEmpty {
@@ -167,8 +182,6 @@ class ReviewsViewModel : ReviewsViewModelType {
                 })
         case .APIError(let message):
             self.messageCellState.value = .APIError(message: message)
-        default:
-            break
         }
     }
 }

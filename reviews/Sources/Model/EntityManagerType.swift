@@ -7,8 +7,6 @@
 //
 
 import Foundation
-
-import Foundation
 import RealmSwift
 
 public protocol EntityManagerType {
@@ -18,8 +16,10 @@ public protocol EntityManagerType {
     var realm: Realm { get }
 
     func all() -> [EntityType]
-    func save(entity: EntityType) -> Bool
-    func saveContentsOf(entities: [EntityType]) -> Bool
+
+    func saveContentsOf(entities: [EntityType]) throws
+    func deleteContentsOf(entities: [EntityType]) throws
+
 }
 
 
@@ -34,42 +34,44 @@ extension EntityManagerType {
     }
 
     /**
-     Creates or updates entity in the specified realm.
+     Creates or updates entities in the specified realm.
 
      - parameter entity: entity to be saved
-     - returns: true if operation succeeded; false otherwise.
      */
-    func save(entity: EntityType) -> Bool {
-        let update = EntityType.primaryKey() != nil
-        return realmWriteOperation { realm.add(entity, update: update) }
-    }
-    public func saveContentsOf(entities: [EntityType]) -> Bool {
-        let update = EntityType.primaryKey() != nil
-        return realmWriteOperation {
+
+    func saveContentsOf(entities: [EntityType]) throws {
+        let canUpdate = EntityType.primaryKey() != nil
+        try realmWriteOperation {
             for entity in entities {
-                realm.add(entity, update: update)
+                realm.add(entity, update: canUpdate)
             }
         }
     }
 
+    func deleteContentsOf(entities: [EntityType]) throws {
+        try realmWriteOperation {
+            for entity in entities {
+                realm.delete(entity)
+            }
+        }
+    }
     /**
      Executes given block, wrapping it in `realm.write` only if needed.
 
      - parameter block: operation to be executed.
-     - returns: true if operation succeeded; false otherwise.
      */
-    private func realmWriteOperation(@noescape block: () -> ()) -> Bool {
+    private func realmWriteOperation(@noescape block: () -> ()) throws {
         guard !realm.inWriteTransaction else {
             block()
-            return true
+            return
         }
         do {
             try realm.write {
                 block()
             }
-            return true
-        } catch {
-            return false
+            return
+        } catch let error {
+            throw error
         }
     }
 

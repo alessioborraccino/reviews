@@ -11,21 +11,22 @@ import SnapKit
 
 class RatingView : UIView {
 
-    let stars : [UIImageView]
-
-    init(totalRating: Int) {
+    private lazy var stars : [UIImageView] = {
         var starArray = [UIImageView]()
-        for _ in 0..<totalRating {
+        for _ in 0..<self.totalRating {
             let starView = UIImageView(image: UIImage(named: "star"))
             starView.contentMode = .ScaleAspectFit
             starArray.append(starView)
         }
-        self.stars = starArray
+        return starArray
+    }()
+
+    private let totalRating : Int
+
+    init(totalRating: Int) {
+        self.totalRating = totalRating
         super.init(frame: CGRectZero)
-        for star in stars {
-            star.contentMode = .ScaleAspectFit
-            addSubview(star)
-        }
+        addStars()
         setDefaultConstraints()
     }
     
@@ -33,6 +34,12 @@ class RatingView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    private func addStars() {
+        for star in stars {
+            addSubview(star)
+        }
+    }
+    
     private func setDefaultConstraints() {
 
         let padding = 10

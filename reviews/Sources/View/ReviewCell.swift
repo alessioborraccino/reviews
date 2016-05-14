@@ -91,14 +91,14 @@ class ReviewCell : UITableViewCell, ReusableType {
         }
     }
 
-    func bind<T: ReviewCellViewModelType>(reviewCellViewModel: T) {
+    func bind(reviewCellViewModel: ReviewCellViewModelType) {
         titleLabel.text = reviewCellViewModel.title
         ratingView.configureWithRating(reviewCellViewModel.rating)
         messageLabel.text = reviewCellViewModel.message
         footerLabel.text = reviewCellViewModel.footer
     }
     
-    static func heightWithViewModel<T: ReviewCellViewModelType>(reviewCellViewModel: T) -> CGFloat {
+    static func heightWithViewModel(reviewCellViewModel: ReviewCellViewModelType) -> CGFloat {
         let boundingSize = CGSize(width: UIScreen.mainScreen().bounds.width - (UI.padding * 2), height: 0)
         let titleAttributes = [NSFontAttributeName:UI.titleFont]
         let messageAttributes = [NSFontAttributeName:UI.messageFont]
