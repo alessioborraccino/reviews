@@ -13,7 +13,7 @@ import ReactiveCocoa
 
 class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    private lazy var reviewsViewModel = ReviewsViewModel()
+    private let reviewsViewModel : ReviewsViewModelType
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRectZero, style: .Plain)
@@ -21,13 +21,22 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
         tableView.dataSource = self
         tableView.registerCell(ReviewCell.self)
         tableView.registerCell(MessageCell.self)
-        tableView.backgroundColor = UIColor.lightGrayColor()
+        tableView.backgroundColor = UIColor.whiteColor()
+        tableView.separatorStyle = .SingleLine
         return tableView
     }()
 
+    init<T: ReviewsViewModelType>(reviewsViewModel: T) {
+        self.reviewsViewModel = reviewsViewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.redColor()
+        title = "Reviews"
         view.addSubview(tableView)
         setDefaultConstraints()
         bind()
@@ -44,13 +53,11 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     private func bind() {
-
         let updateReviewsSignal = zip([
-            reviewsViewModel.needsToInsertCellsAtIndexPaths,
-            reviewsViewModel.needsToDeleteCellsAtIndexPaths,
-            reviewsViewModel.needsToUpdateCellsAtIndexPaths
-            ])
-        
+            reviewsViewModel.needsToInsertReviewsAtIndexPaths,
+            reviewsViewModel.needsToDeleteReviewsAtIndexPaths,
+            reviewsViewModel.needsToUpdateReviewsAtIndexPaths
+        ])
         updateReviewsSignal.observeOn(UIScheduler()).startWithNext { [unowned self] paths in
             self.tableView.beginUpdates()
             self.tableView.insertRowsAtIndexPaths(paths[0], withRowAnimation: .Fade)
@@ -65,6 +72,8 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
 }
 
 extension ReviewsViewController {
+
+    //MARK: TableView Methods
 
     enum ReviewTableSection : Int {
         case Reviews
@@ -90,11 +99,12 @@ extension ReviewsViewController {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch ReviewTableSection(rawValue: indexPath.section)! {
         case .Reviews:
-            return 200
+            return ReviewCell.heightWithViewModel(reviewsViewModel.reviewCellViewModelForIndex(indexPath.row))
         case .Message:
-            return 100
+            return MessageCell.height()
         }
     }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         switch ReviewTableSection(rawValue: indexPath.section)! {
         case .Reviews:
@@ -112,7 +122,7 @@ extension ReviewsViewController {
             (cell as! ReviewCell).bind(reviewCellViewModel)
         case .Message:
             let messageCellViewModel = reviewsViewModel.messageCellViewModel()
-            (cell as! MessageCell).bind(viewModel: messageCellViewModel)
+            (cell as! MessageCell).bind(messageCellViewModel: messageCellViewModel)
         }
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -121,6 +131,14 @@ extension ReviewsViewController {
             reviewsViewModel.loadReviews()
         default:
             break 
+        }
+    }
+
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+        let lastVisibleCell = tableView.visibleCells.last
+        let path = tableView.indexPathForCell(lastVisibleCell!)
+        if path?.section == 1 {
+            reviewsViewModel.loadReviews()
         }
     }
 }

@@ -10,5 +10,13 @@ import Foundation
 import RealmSwift
 
 class Data {
-    static let defaultRealm : Realm = try! Realm()
+    static let defaultRealm : Realm = {
+        do {
+            let realm = try Realm()
+            return realm 
+        } catch (let error) {
+            print(error)
+            fatalError("Could not load realm database")
+        }
+    }()
 }

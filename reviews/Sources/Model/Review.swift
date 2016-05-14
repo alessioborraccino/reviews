@@ -19,7 +19,7 @@ enum TravelerType : String {
 
 class Review : Object, Mappable {
     dynamic var reviewID : Int = 0
-    dynamic var rating: String = ""
+    dynamic var rating: Int = 0
     dynamic var title: String = ""
     dynamic var message: String = ""
     dynamic var author: String = ""
@@ -41,26 +41,45 @@ class Review : Object, Mappable {
 
     func mapping(map: Map) {
         reviewID <- map["review_id"]
-        rating <- map["rating"]
+        rating <- (map["rating"], transformRatingIntString())
         title <- map["title"]
         message <- map["message"]
         author <- map["author"]
         foreignLanguage <- map["foreign_language"]
         date <- map["date"]
         languageCode <- map["languageCode"]
-        travelerType <- (map["traveler_type"], TransformOf<TravelerType?, String>(fromJSON: {
-            if let value = $0 {
+        travelerType <- (map["traveler_type"], transformTravelerTypeString())
+    }
+
+    private func transformRatingIntString() -> TransformOf<Int, String> {
+        return TransformOf<Int, String>(fromJSON: { string in
+            if let value = string , double = Double(value) {
+                return Int(double)
+            } else {
+                return 0
+            }
+        }, toJSON: { rating in
+            if let value = rating {
+                return String(value) + ".0"
+            } else {
+                return nil
+            }
+        })
+    }
+
+    private func transformTravelerTypeString() -> TransformOf<TravelerType?, String> {
+        return TransformOf<TravelerType?, String>(fromJSON: { string in
+            if let value = string {
                 return TravelerType(rawValue: value)
             } else {
                 return nil
             }
-        }, toJSON: {
-            if let value = $0 {
+        }, toJSON: { travelerType in
+            if let value = travelerType {
                 return value?.rawValue
             } else {
                 return nil
             }
-            })
-        )
+        })
     }
 }

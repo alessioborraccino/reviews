@@ -8,6 +8,10 @@
 
 import Foundation
 
-class ReviewEntityManager : EntityManagerType {
+protocol ReviewEntityManagerType : EntityManagerType {
+    func all() -> [Review]
+    func saveContentsOf(entities: [Review]) -> Bool 
+}
+class ReviewEntityManager : ReviewEntityManagerType {
     typealias EntityType = Review 
 }

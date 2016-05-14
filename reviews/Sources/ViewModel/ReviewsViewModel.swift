@@ -7,30 +7,43 @@
 //
 
 import ReactiveCocoa
-import Alamofire
-import AlamofireObjectMapper
 import Result
 
-class ReviewsViewModel {
+protocol ReviewsViewModelType {
+
+    var needsToInsertReviewsAtIndexPaths : SignalProducer<[NSIndexPath],NoError> { get }
+    var needsToUpdateReviewsAtIndexPaths : SignalProducer<[NSIndexPath],NoError> { get }
+    var needsToDeleteReviewsAtIndexPaths : SignalProducer<[NSIndexPath],NoError> { get }
+    var needsToReloadMessage : SignalProducer<Void,NoError> { get }
+
+    var reviewsCount : Int { get }
+    func loadReviews()
+
+    func reviewCellViewModelForIndex(index: Int) -> ReviewCellViewModel
+    func messageCellViewModel() -> MessageCellViewModel
+}
+
+class ReviewsViewModel : ReviewsViewModelType {
 
     // MARK: Constants
 
-    struct Constants {
+    private struct Constants {
         static let reviewsPerPage = 30
     }
 
     // MARK: Dependencies
 
     private let reviewEntityManager = ReviewEntityManager()
-    private let getYourGuideAPI = GetYourGuideAPI()
+    private let getYourGuideAPI = ReviewAPI()
 
     // MARK: Model Properties
 
     private var reviews = MutableProperty<[Review]>([])
-    private var messageCellState = MutableProperty<MessageCellViewModel.MessageCellState>(.WaitingToLoad)
+    private var messageCellState = MutableProperty<MessageCellState>(.WaitingToLoad)
     private var currentReviewPages = 0
 
-    init() {
+    init(reviewEntityManager: ReviewEntityManager,
+         reviewAPI: ReviewAPIType) {
         configureBehavior()
     }
 
@@ -38,7 +51,7 @@ class ReviewsViewModel {
         return reviews.value.count
     }
 
-    lazy var needsToInsertCellsAtIndexPaths : SignalProducer<[NSIndexPath],NoError> = {
+    lazy var needsToInsertReviewsAtIndexPaths : SignalProducer<[NSIndexPath],NoError> = {
         return self.reviews.producer.combinePrevious([]).map { previousReviews, totalReviews in
             return totalReviews.enumerate().filter { (index, review) in
                 return index >= previousReviews.count
@@ -47,7 +60,7 @@ class ReviewsViewModel {
             }
         }
     }()
-    lazy var needsToUpdateCellsAtIndexPaths : SignalProducer<[NSIndexPath],NoError> = {
+    lazy var needsToUpdateReviewsAtIndexPaths : SignalProducer<[NSIndexPath],NoError> = {
         return self.reviews.producer.combinePrevious([]).map { previousReviews, totalReviews in
             return totalReviews.enumerate().filter { (index, review) in
                 return index < previousReviews.count
@@ -59,7 +72,7 @@ class ReviewsViewModel {
             }
         }
     }()
-    lazy var needsToDeleteCellsAtIndexPaths : SignalProducer<[NSIndexPath],NoError> = {
+    lazy var needsToDeleteReviewsAtIndexPaths : SignalProducer<[NSIndexPath],NoError> = {
         return self.reviews.producer.combinePrevious([]).map { previousReviews, totalReviews in
             return previousReviews.enumerate().filter { (index, review) in
                 return index >= totalReviews.count
@@ -140,7 +153,7 @@ class ReviewsViewModel {
         })
     }
 
-    private func updateModelsWithError(error: GetYourGuideAPI.ReviewError) {
+    private func updateModelsWithError(error: ReviewAPIError) {
         switch error {
         case .NetworkFailed:
             dispatch_async(dispatch_get_main_queue(), { [unowned self] in
@@ -152,8 +165,10 @@ class ReviewsViewModel {
                     self.messageCellState.value = .Cached
                 }
                 })
-        case .ParsingFailed, .Unknown:
-            self.messageCellState.value = .NoMoreReviews
+        case .APIError(let message):
+            self.messageCellState.value = .APIError(message: message)
+        default:
+            break
         }
     }
 }

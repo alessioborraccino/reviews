@@ -8,8 +8,8 @@
 
 import Alamofire
 
+enum ReviewAPIRequestBuilder {
 
-enum GetYourGuideRequestBuilder {
     case Reviews(city: String, tour: String, count: Int, page: Int)
 
     func  URLRequest(host host: String) -> NSURLRequest {

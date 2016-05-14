@@ -23,8 +23,13 @@
 		AA74136E1CE6695700F810C3 /* ReviewEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */; };
 		AA7413711CE6753E00F810C3 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413701CE6753E00F810C3 /* MessageCell.swift */; };
 		AA7413731CE67C9F00F810C3 /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */; };
-		AA7413751CE68A2100F810C3 /* GetYourGuideAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413741CE68A2100F810C3 /* GetYourGuideAPI.swift */; };
-		AA7413781CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413771CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift */; };
+		AA7413751CE68A2100F810C3 /* ReviewAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413741CE68A2100F810C3 /* ReviewAPI.swift */; };
+		AA7413781CE68CE100F810C3 /* ReviewAPIRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413771CE68CE100F810C3 /* ReviewAPIRequestBuilder.swift */; };
+		AA74137D1CE71FF900F810C3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74137C1CE71FF900F810C3 /* Colors.swift */; };
+		AA74137F1CE724E700F810C3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74137E1CE724E700F810C3 /* Fonts.swift */; };
+		AA7413811CE728B000F810C3 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413801CE728B000F810C3 /* RatingView.swift */; };
+		AA7413831CE7476900F810C3 /* ReviewErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413821CE7476900F810C3 /* ReviewErrorResponse.swift */; };
+		AA7413851CE74CE900F810C3 /* ReviewsSuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413841CE74CE900F810C3 /* ReviewsSuccessResponse.swift */; };
 		D5A9FA3949490248DA18BC99 /* Pods_reviewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AF315E7D4592FA74B212ED /* Pods_reviewsTests.framework */; };
 		FF4D0BDC983B6E453BC99CAE /* Pods_reviews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1EE95EB792973812202CF3 /* Pods_reviews.framework */; };
 /* End PBXBuildFile section */
@@ -64,8 +69,13 @@
 		AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewEntityManager.swift; path = Sources/Model/ReviewEntityManager.swift; sourceTree = "<group>"; };
 		AA7413701CE6753E00F810C3 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCell.swift; path = Sources/View/MessageCell.swift; sourceTree = "<group>"; };
 		AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCellViewModel.swift; path = Sources/ViewModel/MessageCellViewModel.swift; sourceTree = "<group>"; };
-		AA7413741CE68A2100F810C3 /* GetYourGuideAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetYourGuideAPI.swift; path = Sources/Networking/GetYourGuideAPI.swift; sourceTree = "<group>"; };
-		AA7413771CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetYourGuideRequestBuilder.swift; path = Sources/Networking/GetYourGuideRequestBuilder.swift; sourceTree = "<group>"; };
+		AA7413741CE68A2100F810C3 /* ReviewAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewAPI.swift; path = Sources/Networking/ReviewAPI.swift; sourceTree = "<group>"; };
+		AA7413771CE68CE100F810C3 /* ReviewAPIRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewAPIRequestBuilder.swift; path = Sources/Networking/ReviewAPIRequestBuilder.swift; sourceTree = "<group>"; };
+		AA74137C1CE71FF900F810C3 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AA74137E1CE724E700F810C3 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fonts.swift; path = Sources/Fonts.swift; sourceTree = "<group>"; };
+		AA7413801CE728B000F810C3 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RatingView.swift; path = Sources/View/RatingView.swift; sourceTree = "<group>"; };
+		AA7413821CE7476900F810C3 /* ReviewErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewErrorResponse.swift; path = Sources/Networking/ReviewErrorResponse.swift; sourceTree = "<group>"; };
+		AA7413841CE74CE900F810C3 /* ReviewsSuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewsSuccessResponse.swift; path = Sources/Model/ReviewsSuccessResponse.swift; sourceTree = "<group>"; };
 		EA1EE95EB792973812202CF3 /* Pods_reviews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_reviews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC198DD19AE6587233A2C431 /* Pods-reviews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reviews/Pods-reviews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,7 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				AA74136F1CE66A2A00F810C3 /* EntityManagers */,
-				AA7413561CE646D600F810C3 /* Review.swift */,
+				AA7413871CE7547800F810C3 /* Entities */,
+				AA7413861CE7534000F810C3 /* ResponseModels */,
 				AA74135D1CE64F2F00F810C3 /* Data.swift */,
 			);
 			name = Model;
@@ -185,6 +196,8 @@
 			children = (
 				AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */,
 				AA3FA54E1CE63FCF004165B5 /* Info.plist */,
+				AA74137C1CE71FF900F810C3 /* Colors.swift */,
+				AA74137E1CE724E700F810C3 /* Fonts.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -200,8 +213,8 @@
 		AA74136A1CE65FE600F810C3 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				AA7413761CE68CCC00F810C3 /* Builders */,
-				AA7413741CE68A2100F810C3 /* GetYourGuideAPI.swift */,
+				AA7413761CE68CCC00F810C3 /* RequestBuilders */,
+				AA7413741CE68A2100F810C3 /* ReviewAPI.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -215,12 +228,12 @@
 			name = EntityManagers;
 			sourceTree = "<group>";
 		};
-		AA7413761CE68CCC00F810C3 /* Builders */ = {
+		AA7413761CE68CCC00F810C3 /* RequestBuilders */ = {
 			isa = PBXGroup;
 			children = (
-				AA7413771CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift */,
+				AA7413771CE68CE100F810C3 /* ReviewAPIRequestBuilder.swift */,
 			);
-			name = Builders;
+			name = RequestBuilders;
 			sourceTree = "<group>";
 		};
 		AA7413791CE6950600F810C3 /* Extensions */ = {
@@ -245,8 +258,26 @@
 			children = (
 				AA74135F1CE6565C00F810C3 /* ReviewCell.swift */,
 				AA7413701CE6753E00F810C3 /* MessageCell.swift */,
+				AA7413801CE728B000F810C3 /* RatingView.swift */,
 			);
 			name = Subviews;
+			sourceTree = "<group>";
+		};
+		AA7413861CE7534000F810C3 /* ResponseModels */ = {
+			isa = PBXGroup;
+			children = (
+				AA7413821CE7476900F810C3 /* ReviewErrorResponse.swift */,
+				AA7413841CE74CE900F810C3 /* ReviewsSuccessResponse.swift */,
+			);
+			name = ResponseModels;
+			sourceTree = "<group>";
+		};
+		AA7413871CE7547800F810C3 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				AA7413561CE646D600F810C3 /* Review.swift */,
+			);
+			name = Entities;
 			sourceTree = "<group>";
 		};
 		C666D6E0C05BFD399F644892 /* Pods */ = {
@@ -460,20 +491,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA74136C1CE6681B00F810C3 /* EntityManagerType.swift in Sources */,
-				AA7413751CE68A2100F810C3 /* GetYourGuideAPI.swift in Sources */,
+				AA7413751CE68A2100F810C3 /* ReviewAPI.swift in Sources */,
 				AA7413631CE657F600F810C3 /* ReusableType.swift in Sources */,
+				AA7413831CE7476900F810C3 /* ReviewErrorResponse.swift in Sources */,
+				AA7413811CE728B000F810C3 /* RatingView.swift in Sources */,
 				AA7413731CE67C9F00F810C3 /* MessageCellViewModel.swift in Sources */,
 				AA3FA5421CE63FCF004165B5 /* ReviewsViewController.swift in Sources */,
 				AA7413671CE65BF100F810C3 /* ReviewsViewModel.swift in Sources */,
+				AA7413851CE74CE900F810C3 /* ReviewsSuccessResponse.swift in Sources */,
 				AA7413601CE6565C00F810C3 /* ReviewCell.swift in Sources */,
+				AA74137F1CE724E700F810C3 /* Fonts.swift in Sources */,
 				AA7413711CE6753E00F810C3 /* MessageCell.swift in Sources */,
 				AA3FA5401CE63FCF004165B5 /* AppDelegate.swift in Sources */,
+				AA74137D1CE71FF900F810C3 /* Colors.swift in Sources */,
 				AA7413691CE65D3300F810C3 /* ReviewCellViewModel.swift in Sources */,
 				AA74136E1CE6695700F810C3 /* ReviewEntityManager.swift in Sources */,
 				AA7413651CE65A2400F810C3 /* UITableView+ReusableType.swift in Sources */,
 				AA7413571CE646D600F810C3 /* Review.swift in Sources */,
 				AA74135E1CE64F2F00F810C3 /* Data.swift in Sources */,
-				AA7413781CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift in Sources */,
+				AA7413781CE68CE100F810C3 /* ReviewAPIRequestBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

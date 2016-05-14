@@ -11,31 +11,47 @@ import SnapKit
 
 class ReviewCell : UITableViewCell, ReusableType {
 
-    private lazy var containerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.whiteColor()
-        return view
-    }()
+    private struct UI {
+        static let topBottomPadding : CGFloat = 10.0
+        static let padding : CGFloat = 5.0
+        static let ratingViewHeight : CGFloat = 40.0
+
+        static let titleFont = AppFont.bold
+        static let messageFont = AppFont.regular
+        static let footerFont = AppFont.hint
+    }
 
     private lazy var titleLabel : UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.blackColor()
+        label.textColor = AppColor.textDark
+        label.font = UI.titleFont
+        label.numberOfLines = 0
         return label
     }()
+    private lazy var ratingView : RatingView = RatingView(totalRating: 5)
+
     private lazy var messageLabel : UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.blackColor()
+        label.textColor = AppColor.textDark
+        label.font = UI.messageFont
+        label.numberOfLines = 0
+        return label
+    }()
+    private lazy var footerLabel : UILabel = {
+        let label = UILabel()
+        label.textColor = AppColor.textLight
+        label.font = UI.footerFont
         label.numberOfLines = 0
         return label
     }()
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor.lightGrayColor()
         selectionStyle = .None
-        contentView.addSubview(containerView)
-        containerView.addSubview(titleLabel)
-        containerView.addSubview(messageLabel)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(ratingView)
+        contentView.addSubview(messageLabel)
+        contentView.addSubview(footerLabel)
         setDefaultConstraints()
     }
     
@@ -44,26 +60,55 @@ class ReviewCell : UITableViewCell, ReusableType {
     }
 
     private func setDefaultConstraints() {
-        containerView.snp_makeConstraints { (make) in
-            make.edges.equalTo(contentView).inset(5)
-        }
+
+        let padding = UI.padding
+        let ratingViewHeight = UI.ratingViewHeight
+        let topBottomPadding = UI.topBottomPadding
+
         titleLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(containerView.snp_top)
-            make.leading.equalTo(containerView.snp_leading)
-            make.trailing.equalTo(containerView.snp_trailing)
-            make.height.equalTo(44)
+            make.top.equalTo(contentView.snp_top).offset(topBottomPadding)
+            make.bottom.equalTo(ratingView.snp_top)
+            make.leading.equalTo(contentView.snp_leading).offset(padding)
+            make.trailing.equalTo(contentView.snp_trailing).offset(-padding)
+        }
+        ratingView.snp_makeConstraints { (make) in
+            make.top.equalTo(titleLabel.snp_bottom)
+            make.leading.equalTo(titleLabel.snp_leading)
+            make.trailing.equalTo(titleLabel.snp_trailing)
+            make.height.equalTo(ratingViewHeight)
         }
         messageLabel.snp_makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp_bottom)
-            make.bottom.equalTo(containerView.snp_bottom)
-            make.leading.equalTo(containerView.snp_leading)
-            make.trailing.equalTo(containerView.snp_trailing)
+            make.top.equalTo(ratingView.snp_bottom).offset(padding)
+            make.bottom.equalTo(footerLabel.snp_top).offset(-padding)
+            make.leading.equalTo(titleLabel.snp_leading)
+            make.trailing.equalTo(titleLabel.snp_trailing)
+        }
+        footerLabel.snp_makeConstraints { (make) in
+            make.top.equalTo(messageLabel.snp_bottom).offset(padding)
+            make.bottom.equalTo(contentView.snp_bottom).offset(-topBottomPadding)
+            make.leading.equalTo(titleLabel.snp_leading)
+            make.trailing.equalTo(titleLabel.snp_trailing)
         }
     }
 
-    func bind(model: ReviewCellViewModel) {
-        titleLabel.text = model.title
-        messageLabel.text = model.message
+    func bind<T: ReviewCellViewModelType>(reviewCellViewModel: T) {
+        titleLabel.text = reviewCellViewModel.title
+        ratingView.configureWithRating(reviewCellViewModel.rating)
+        messageLabel.text = reviewCellViewModel.message
+        footerLabel.text = reviewCellViewModel.footer
+    }
+    
+    static func heightWithViewModel<T: ReviewCellViewModelType>(reviewCellViewModel: T) -> CGFloat {
+        let boundingSize = CGSize(width: UIScreen.mainScreen().bounds.width - (UI.padding * 2), height: 0)
+        let titleAttributes = [NSFontAttributeName:UI.titleFont]
+        let messageAttributes = [NSFontAttributeName:UI.messageFont]
+        let footerAttributes = [NSFontAttributeName:UI.footerFont]
+
+        let titleHeight = reviewCellViewModel.title.boundingRectWithSize(boundingSize, options: .UsesLineFragmentOrigin, attributes: titleAttributes, context: nil).height
+        let messageHeight = reviewCellViewModel.message.boundingRectWithSize(boundingSize, options: .UsesLineFragmentOrigin, attributes: messageAttributes, context: nil).height
+        let footerHeight = reviewCellViewModel.footer.boundingRectWithSize(boundingSize, options: .UsesLineFragmentOrigin, attributes: footerAttributes, context: nil).height
+
+        return titleHeight + messageHeight + footerHeight + UI.ratingViewHeight + UI.topBottomPadding * 2 + UI.padding * 3
     }
 
 }

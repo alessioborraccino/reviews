@@ -8,37 +8,60 @@
 
 import Foundation
 
-class MessageCellViewModel {
+enum MessageCellState : CustomStringConvertible, Equatable {
+    case WaitingToLoad
+    case NoReviewsAvailable
+    case NoConnection
+    case Loading
+    case Cached
+    case APIError(message: String)
 
-    enum MessageCellState : CustomStringConvertible {
-        case NoReviewsAvailable
-        case NoConnection
-        case WaitingToLoad
-        case Loading
-        case NoMoreReviews
-        case Cached
-
-        var description: String {
-            switch self {
-            case .NoReviewsAvailable:
-                return "No Reviews Available"
-            case .WaitingToLoad:
-                return "Load new results"
-            case .Loading:
-                return "Loading..."
-            case .NoMoreReviews:
-                return "No More Reviews Available"
-            case .NoConnection:
-                return "No Internet Connection"
-            case .Cached:
-                return "Reviews might not be up to date"
-            }
+    var description: String {
+        switch self {
+        case .NoReviewsAvailable:
+            return "No Reviews Available"
+        case .WaitingToLoad:
+            return "Load new results"
+        case .Loading:
+            return "Loading..."
+        case .NoConnection:
+            return "No Internet Connection. Try again later"
+        case .Cached:
+            return "Internet Problems. Reviews might not be up to date"
+        case .APIError(let message):
+            return message
         }
     }
+}
+
+func ==(lhs: MessageCellState, rhs: MessageCellState) -> Bool {
+
+    switch (lhs, rhs) {
+
+    case (.WaitingToLoad, .WaitingToLoad),
+         (.NoReviewsAvailable, .NoReviewsAvailable),
+         (.NoConnection, .NoConnection),
+         (.Loading, .Loading),
+         (.Cached, .Cached),
+         (.APIError(_),.APIError(_)):
+        return true
+    default:
+        return false
+    }
+}
+
+protocol MessageCellViewModelType {
+    var message : String { get }
+    var isLoading : Bool { get }
+}
+
+class MessageCellViewModel : MessageCellViewModelType {
 
     let message : String
+    let isLoading : Bool
 
     init(state: MessageCellState) {
         self.message = state.description
+        self.isLoading = state == .Loading
     }
 }

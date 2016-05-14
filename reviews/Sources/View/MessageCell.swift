@@ -13,7 +13,10 @@ class MessageCell : UITableViewCell, ReusableType {
 
     private lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.cyanColor()
+        view.backgroundColor = UIColor.whiteColor()
+        view.layer.cornerRadius = 5
+        view.layer.borderColor = AppColor.textDark.CGColor
+        view.layer.borderWidth = 2
         return view
     }()
 
@@ -25,11 +28,18 @@ class MessageCell : UITableViewCell, ReusableType {
         return label
     }()
 
+    private lazy var activityIndicatorView : UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .Gray)
+        indicator.hidesWhenStopped = true
+        return indicator
+    }()
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        backgroundColor = UIColor.lightGrayColor()
         contentView.addSubview(containerView)
         containerView.addSubview(messageLabel)
+        containerView.addSubview(activityIndicatorView)
+        
         setDefaultConstraints()
     }
     
@@ -38,19 +48,34 @@ class MessageCell : UITableViewCell, ReusableType {
     }
 
     private func setDefaultConstraints() {
+
+        let padding = 10
+
         containerView.snp_makeConstraints { (make) in
-            make.edges.equalTo(contentView).inset(5)
+            make.edges.equalTo(contentView).inset(padding)
         }
         messageLabel.snp_makeConstraints { (make) in
             make.top.equalTo(containerView.snp_top)
             make.bottom.equalTo(containerView.snp_bottom)
-            make.leading.equalTo(containerView.snp_leading)
-            make.trailing.equalTo(containerView.snp_trailing)
+            make.leading.equalTo(containerView.snp_leading).offset(padding)
+            make.trailing.equalTo(containerView.snp_trailing).offset(-padding)
+        }
+        activityIndicatorView.snp_makeConstraints { (make) in
+            make.center.equalTo(contentView)
         }
     }
 
-    func bind(viewModel viewModel: MessageCellViewModel) {
-        messageLabel.text = viewModel.message
+    func bind<T: MessageCellViewModelType>(messageCellViewModel viewModel: T) {
+        if viewModel.isLoading {
+            messageLabel.text = ""
+            activityIndicatorView.startAnimating()
+        } else {
+            messageLabel.text = viewModel.message
+            activityIndicatorView.stopAnimating()
+        }
     }
 
+    static func height() -> CGFloat {
+        return 100
+    }
 }
