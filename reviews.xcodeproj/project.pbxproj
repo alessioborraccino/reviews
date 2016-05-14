@@ -8,12 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		AA3FA5401CE63FCF004165B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */; };
-		AA3FA5421CE63FCF004165B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3FA5411CE63FCF004165B5 /* ViewController.swift */; };
-		AA3FA5451CE63FCF004165B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA3FA5431CE63FCF004165B5 /* Main.storyboard */; };
-		AA3FA5481CE63FCF004165B5 /* reviews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AA3FA5461CE63FCF004165B5 /* reviews.xcdatamodeld */; };
+		AA3FA5421CE63FCF004165B5 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3FA5411CE63FCF004165B5 /* ReviewsViewController.swift */; };
 		AA3FA54A1CE63FCF004165B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA3FA5491CE63FCF004165B5 /* Assets.xcassets */; };
 		AA3FA54D1CE63FCF004165B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA3FA54B1CE63FCF004165B5 /* LaunchScreen.storyboard */; };
 		AA3FA5581CE63FCF004165B5 /* reviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3FA5571CE63FCF004165B5 /* reviewsTests.swift */; };
+		AA7413571CE646D600F810C3 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413561CE646D600F810C3 /* Review.swift */; };
+		AA74135E1CE64F2F00F810C3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74135D1CE64F2F00F810C3 /* Data.swift */; };
+		AA7413601CE6565C00F810C3 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74135F1CE6565C00F810C3 /* ReviewCell.swift */; };
+		AA7413631CE657F600F810C3 /* ReusableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413621CE657F600F810C3 /* ReusableType.swift */; };
+		AA7413651CE65A2400F810C3 /* UITableView+ReusableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */; };
+		AA7413671CE65BF100F810C3 /* ReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413661CE65BF100F810C3 /* ReviewsViewModel.swift */; };
+		AA7413691CE65D3300F810C3 /* ReviewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413681CE65D3300F810C3 /* ReviewCellViewModel.swift */; };
+		AA74136C1CE6681B00F810C3 /* EntityManagerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74136B1CE6681B00F810C3 /* EntityManagerType.swift */; };
+		AA74136E1CE6695700F810C3 /* ReviewEntityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */; };
+		AA7413711CE6753E00F810C3 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413701CE6753E00F810C3 /* MessageCell.swift */; };
+		AA7413731CE67C9F00F810C3 /* MessageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */; };
+		AA7413751CE68A2100F810C3 /* GetYourGuideAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413741CE68A2100F810C3 /* GetYourGuideAPI.swift */; };
+		AA7413781CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413771CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift */; };
+		D5A9FA3949490248DA18BC99 /* Pods_reviewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AF315E7D4592FA74B212ED /* Pods_reviewsTests.framework */; };
+		FF4D0BDC983B6E453BC99CAE /* Pods_reviews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1EE95EB792973812202CF3 /* Pods_reviews.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,17 +40,34 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		101966482226D8A9D1F39BEC /* Pods-reviews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviews.release.xcconfig"; path = "Pods/Target Support Files/Pods-reviews/Pods-reviews.release.xcconfig"; sourceTree = "<group>"; };
+		71FF12D6CEBABCDA53C11389 /* Pods-reviewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviewsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reviewsTests/Pods-reviewsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		97AF315E7D4592FA74B212ED /* Pods_reviewsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_reviewsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		99C3CE84D25F0143D1B8F85D /* Pods-reviewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviewsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-reviewsTests/Pods-reviewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		AA3FA53C1CE63FCE004165B5 /* reviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AA3FA5411CE63FCF004165B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AA3FA5441CE63FCF004165B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AA3FA5471CE63FCF004165B5 /* reviews.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = reviews.xcdatamodel; sourceTree = "<group>"; };
+		AA3FA5411CE63FCF004165B5 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
 		AA3FA5491CE63FCF004165B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA3FA54C1CE63FCF004165B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AA3FA54E1CE63FCF004165B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA3FA5531CE63FCF004165B5 /* reviewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reviewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3FA5571CE63FCF004165B5 /* reviewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reviewsTests.swift; sourceTree = "<group>"; };
 		AA3FA5591CE63FCF004165B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA7413561CE646D600F810C3 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Review.swift; path = Sources/Model/Review.swift; sourceTree = "<group>"; };
+		AA74135D1CE64F2F00F810C3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Sources/Model/Data.swift; sourceTree = "<group>"; };
+		AA74135F1CE6565C00F810C3 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCell.swift; path = Sources/View/ReviewCell.swift; sourceTree = "<group>"; };
+		AA7413621CE657F600F810C3 /* ReusableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReusableType.swift; path = Sources/ViewModel/ReusableType.swift; sourceTree = "<group>"; };
+		AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+ReusableType.swift"; path = "Sources/View/UITableView+ReusableType.swift"; sourceTree = "<group>"; };
+		AA7413661CE65BF100F810C3 /* ReviewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewsViewModel.swift; path = Sources/ViewModel/ReviewsViewModel.swift; sourceTree = "<group>"; };
+		AA7413681CE65D3300F810C3 /* ReviewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCellViewModel.swift; path = Sources/ViewModel/ReviewCellViewModel.swift; sourceTree = "<group>"; };
+		AA74136B1CE6681B00F810C3 /* EntityManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityManagerType.swift; path = Sources/Model/EntityManagerType.swift; sourceTree = "<group>"; };
+		AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewEntityManager.swift; path = Sources/Model/ReviewEntityManager.swift; sourceTree = "<group>"; };
+		AA7413701CE6753E00F810C3 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCell.swift; path = Sources/View/MessageCell.swift; sourceTree = "<group>"; };
+		AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCellViewModel.swift; path = Sources/ViewModel/MessageCellViewModel.swift; sourceTree = "<group>"; };
+		AA7413741CE68A2100F810C3 /* GetYourGuideAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetYourGuideAPI.swift; path = Sources/Networking/GetYourGuideAPI.swift; sourceTree = "<group>"; };
+		AA7413771CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetYourGuideRequestBuilder.swift; path = Sources/Networking/GetYourGuideRequestBuilder.swift; sourceTree = "<group>"; };
+		EA1EE95EB792973812202CF3 /* Pods_reviews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_reviews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC198DD19AE6587233A2C431 /* Pods-reviews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reviews/Pods-reviews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF4D0BDC983B6E453BC99CAE /* Pods_reviews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +83,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5A9FA3949490248DA18BC99 /* Pods_reviewsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1052083F01C1733B27EFD8D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EA1EE95EB792973812202CF3 /* Pods_reviews.framework */,
+				97AF315E7D4592FA74B212ED /* Pods_reviewsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AA3FA5331CE63FCE004165B5 = {
 			isa = PBXGroup;
 			children = (
 				AA3FA53E1CE63FCF004165B5 /* reviews */,
 				AA3FA5561CE63FCF004165B5 /* reviewsTests */,
 				AA3FA53D1CE63FCE004165B5 /* Products */,
+				C666D6E0C05BFD399F644892 /* Pods */,
+				1052083F01C1733B27EFD8D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,13 +122,12 @@
 		AA3FA53E1CE63FCF004165B5 /* reviews */ = {
 			isa = PBXGroup;
 			children = (
-				AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */,
-				AA3FA5411CE63FCF004165B5 /* ViewController.swift */,
-				AA3FA5431CE63FCF004165B5 /* Main.storyboard */,
-				AA3FA5491CE63FCF004165B5 /* Assets.xcassets */,
-				AA3FA54B1CE63FCF004165B5 /* LaunchScreen.storyboard */,
-				AA3FA54E1CE63FCF004165B5 /* Info.plist */,
-				AA3FA5461CE63FCF004165B5 /* reviews.xcdatamodeld */,
+				AA74136A1CE65FE600F810C3 /* Networking */,
+				AA74135B1CE646FA00F810C3 /* Main */,
+				AA74135A1CE646EE00F810C3 /* Resources */,
+				AA7413591CE646E700F810C3 /* View */,
+				AA7413581CE646E000F810C3 /* ViewModel */,
+				AA7413551CE646B500F810C3 /* Model */,
 			);
 			path = reviews;
 			sourceTree = "<group>";
@@ -99,6 +141,125 @@
 			path = reviewsTests;
 			sourceTree = "<group>";
 		};
+		AA7413551CE646B500F810C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AA74136F1CE66A2A00F810C3 /* EntityManagers */,
+				AA7413561CE646D600F810C3 /* Review.swift */,
+				AA74135D1CE64F2F00F810C3 /* Data.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		AA7413581CE646E000F810C3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AA7413661CE65BF100F810C3 /* ReviewsViewModel.swift */,
+				AA7413681CE65D3300F810C3 /* ReviewCellViewModel.swift */,
+				AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		AA7413591CE646E700F810C3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AA74137A1CE6951600F810C3 /* Reviews */,
+				AA7413791CE6950600F810C3 /* Extensions */,
+				AA7413611CE657D600F810C3 /* Protocols */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		AA74135A1CE646EE00F810C3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA3FA5491CE63FCF004165B5 /* Assets.xcassets */,
+				AA3FA54B1CE63FCF004165B5 /* LaunchScreen.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		AA74135B1CE646FA00F810C3 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */,
+				AA3FA54E1CE63FCF004165B5 /* Info.plist */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		AA7413611CE657D600F810C3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AA7413621CE657F600F810C3 /* ReusableType.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		AA74136A1CE65FE600F810C3 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AA7413761CE68CCC00F810C3 /* Builders */,
+				AA7413741CE68A2100F810C3 /* GetYourGuideAPI.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		AA74136F1CE66A2A00F810C3 /* EntityManagers */ = {
+			isa = PBXGroup;
+			children = (
+				AA74136B1CE6681B00F810C3 /* EntityManagerType.swift */,
+				AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */,
+			);
+			name = EntityManagers;
+			sourceTree = "<group>";
+		};
+		AA7413761CE68CCC00F810C3 /* Builders */ = {
+			isa = PBXGroup;
+			children = (
+				AA7413771CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift */,
+			);
+			name = Builders;
+			sourceTree = "<group>";
+		};
+		AA7413791CE6950600F810C3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		AA74137A1CE6951600F810C3 /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				AA74137B1CE6951F00F810C3 /* Subviews */,
+				AA3FA5411CE63FCF004165B5 /* ReviewsViewController.swift */,
+			);
+			name = Reviews;
+			sourceTree = "<group>";
+		};
+		AA74137B1CE6951F00F810C3 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				AA74135F1CE6565C00F810C3 /* ReviewCell.swift */,
+				AA7413701CE6753E00F810C3 /* MessageCell.swift */,
+			);
+			name = Subviews;
+			sourceTree = "<group>";
+		};
+		C666D6E0C05BFD399F644892 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC198DD19AE6587233A2C431 /* Pods-reviews.debug.xcconfig */,
+				101966482226D8A9D1F39BEC /* Pods-reviews.release.xcconfig */,
+				71FF12D6CEBABCDA53C11389 /* Pods-reviewsTests.debug.xcconfig */,
+				99C3CE84D25F0143D1B8F85D /* Pods-reviewsTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +267,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA3FA55C1CE63FCF004165B5 /* Build configuration list for PBXNativeTarget "reviews" */;
 			buildPhases = (
+				0D9E418E4BFFF8A71CD40B28 /* 📦 Check Pods Manifest.lock */,
 				AA3FA5381CE63FCE004165B5 /* Sources */,
 				AA3FA5391CE63FCE004165B5 /* Frameworks */,
 				AA3FA53A1CE63FCE004165B5 /* Resources */,
+				0DF804C40D53A00ED58DAFA6 /* 📦 Embed Pods Frameworks */,
+				3EAE3E997AA542DA78A86749 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,9 +287,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AA3FA55F1CE63FCF004165B5 /* Build configuration list for PBXNativeTarget "reviewsTests" */;
 			buildPhases = (
+				52423D813FF2E57AE7B808C4 /* 📦 Check Pods Manifest.lock */,
 				AA3FA54F1CE63FCF004165B5 /* Sources */,
 				AA3FA5501CE63FCF004165B5 /* Frameworks */,
 				AA3FA5511CE63FCF004165B5 /* Resources */,
+				210F44E2D15E4B741FC3B341 /* 📦 Embed Pods Frameworks */,
+				256FDCFB637A7F8E8EACB734 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -182,7 +349,6 @@
 			files = (
 				AA3FA54D1CE63FCF004165B5 /* LaunchScreen.storyboard in Resources */,
 				AA3FA54A1CE63FCF004165B5 /* Assets.xcassets in Resources */,
-				AA3FA5451CE63FCF004165B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,14 +361,119 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D9E418E4BFFF8A71CD40B28 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0DF804C40D53A00ED58DAFA6 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-reviews/Pods-reviews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		210F44E2D15E4B741FC3B341 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-reviewsTests/Pods-reviewsTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		256FDCFB637A7F8E8EACB734 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-reviewsTests/Pods-reviewsTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3EAE3E997AA542DA78A86749 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-reviews/Pods-reviews-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		52423D813FF2E57AE7B808C4 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AA3FA5381CE63FCE004165B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AA3FA5421CE63FCF004165B5 /* ViewController.swift in Sources */,
+				AA74136C1CE6681B00F810C3 /* EntityManagerType.swift in Sources */,
+				AA7413751CE68A2100F810C3 /* GetYourGuideAPI.swift in Sources */,
+				AA7413631CE657F600F810C3 /* ReusableType.swift in Sources */,
+				AA7413731CE67C9F00F810C3 /* MessageCellViewModel.swift in Sources */,
+				AA3FA5421CE63FCF004165B5 /* ReviewsViewController.swift in Sources */,
+				AA7413671CE65BF100F810C3 /* ReviewsViewModel.swift in Sources */,
+				AA7413601CE6565C00F810C3 /* ReviewCell.swift in Sources */,
+				AA7413711CE6753E00F810C3 /* MessageCell.swift in Sources */,
 				AA3FA5401CE63FCF004165B5 /* AppDelegate.swift in Sources */,
-				AA3FA5481CE63FCF004165B5 /* reviews.xcdatamodeld in Sources */,
+				AA7413691CE65D3300F810C3 /* ReviewCellViewModel.swift in Sources */,
+				AA74136E1CE6695700F810C3 /* ReviewEntityManager.swift in Sources */,
+				AA7413651CE65A2400F810C3 /* UITableView+ReusableType.swift in Sources */,
+				AA7413571CE646D600F810C3 /* Review.swift in Sources */,
+				AA74135E1CE64F2F00F810C3 /* Data.swift in Sources */,
+				AA7413781CE68CE100F810C3 /* GetYourGuideRequestBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,14 +496,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AA3FA5431CE63FCF004165B5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AA3FA5441CE63FCF004165B5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AA3FA54B1CE63FCF004165B5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -329,6 +592,7 @@
 		};
 		AA3FA55D1CE63FCF004165B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC198DD19AE6587233A2C431 /* Pods-reviews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = reviews/Info.plist;
@@ -340,6 +604,7 @@
 		};
 		AA3FA55E1CE63FCF004165B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 101966482226D8A9D1F39BEC /* Pods-reviews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = reviews/Info.plist;
@@ -351,6 +616,7 @@
 		};
 		AA3FA5601CE63FCF004165B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 71FF12D6CEBABCDA53C11389 /* Pods-reviewsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = reviewsTests/Info.plist;
@@ -363,6 +629,7 @@
 		};
 		AA3FA5611CE63FCF004165B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 99C3CE84D25F0143D1B8F85D /* Pods-reviewsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = reviewsTests/Info.plist;
@@ -392,6 +659,7 @@
 				AA3FA55E1CE63FCF004165B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AA3FA55F1CE63FCF004165B5 /* Build configuration list for PBXNativeTarget "reviewsTests" */ = {
 			isa = XCConfigurationList;
@@ -400,21 +668,9 @@
 				AA3FA5611CE63FCF004165B5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		AA3FA5461CE63FCF004165B5 /* reviews.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				AA3FA5471CE63FCF004165B5 /* reviews.xcdatamodel */,
-			);
-			currentVersion = AA3FA5471CE63FCF004165B5 /* reviews.xcdatamodel */;
-			path = reviews.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = AA3FA5341CE63FCE004165B5 /* Project object */;
 }
