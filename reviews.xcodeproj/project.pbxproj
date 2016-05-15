@@ -72,37 +72,37 @@
 		AA3FA5531CE63FCF004165B5 /* reviewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = reviewsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3FA5571CE63FCF004165B5 /* ReviewEntityManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEntityManagerTests.swift; sourceTree = "<group>"; };
 		AA3FA5591CE63FCF004165B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AA7413561CE646D600F810C3 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Review.swift; path = Sources/Model/Review.swift; sourceTree = "<group>"; };
-		AA74135F1CE6565C00F810C3 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCell.swift; path = Sources/View/ReviewCell.swift; sourceTree = "<group>"; };
-		AA7413621CE657F600F810C3 /* ReusableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReusableType.swift; path = Sources/ViewModel/ReusableType.swift; sourceTree = "<group>"; };
-		AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+ReusableType.swift"; path = "Sources/View/UITableView+ReusableType.swift"; sourceTree = "<group>"; };
-		AA7413661CE65BF100F810C3 /* ReviewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewsViewModel.swift; path = Sources/ViewModel/ReviewsViewModel.swift; sourceTree = "<group>"; };
-		AA7413681CE65D3300F810C3 /* ReviewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCellViewModel.swift; path = Sources/ViewModel/ReviewCellViewModel.swift; sourceTree = "<group>"; };
-		AA74136B1CE6681B00F810C3 /* EntityManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EntityManagerType.swift; path = Sources/Model/EntityManagerType.swift; sourceTree = "<group>"; };
-		AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewEntityManager.swift; path = Sources/Model/ReviewEntityManager.swift; sourceTree = "<group>"; };
-		AA7413701CE6753E00F810C3 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCell.swift; path = Sources/View/MessageCell.swift; sourceTree = "<group>"; };
-		AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCellViewModel.swift; path = Sources/ViewModel/MessageCellViewModel.swift; sourceTree = "<group>"; };
-		AA7413741CE68A2100F810C3 /* ReviewAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewAPI.swift; path = Sources/Networking/ReviewAPI.swift; sourceTree = "<group>"; };
-		AA7413771CE68CE100F810C3 /* ReviewAPIRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewAPIRequestBuilder.swift; path = Sources/Networking/ReviewAPIRequestBuilder.swift; sourceTree = "<group>"; };
+		AA7413561CE646D600F810C3 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		AA74135F1CE6565C00F810C3 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		AA7413621CE657F600F810C3 /* ReusableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableType.swift; sourceTree = "<group>"; };
+		AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+ReusableType.swift"; sourceTree = "<group>"; };
+		AA7413661CE65BF100F810C3 /* ReviewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewModel.swift; sourceTree = "<group>"; };
+		AA7413681CE65D3300F810C3 /* ReviewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCellViewModel.swift; sourceTree = "<group>"; };
+		AA74136B1CE6681B00F810C3 /* EntityManagerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityManagerType.swift; sourceTree = "<group>"; };
+		AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewEntityManager.swift; sourceTree = "<group>"; };
+		AA7413701CE6753E00F810C3 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellViewModel.swift; sourceTree = "<group>"; };
+		AA7413741CE68A2100F810C3 /* ReviewAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewAPI.swift; sourceTree = "<group>"; };
+		AA7413771CE68CE100F810C3 /* ReviewAPIRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewAPIRequestBuilder.swift; sourceTree = "<group>"; };
 		AA74137C1CE71FF900F810C3 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		AA74137E1CE724E700F810C3 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fonts.swift; path = Sources/Fonts.swift; sourceTree = "<group>"; };
-		AA7413801CE728B000F810C3 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RatingView.swift; path = Sources/View/RatingView.swift; sourceTree = "<group>"; };
-		AA7413821CE7476900F810C3 /* ReviewErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewErrorResponse.swift; path = Sources/Networking/ReviewErrorResponse.swift; sourceTree = "<group>"; };
-		AA7413841CE74CE900F810C3 /* ReviewsSuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewsSuccessResponse.swift; path = Sources/Model/ReviewsSuccessResponse.swift; sourceTree = "<group>"; };
+		AA74137E1CE724E700F810C3 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		AA7413801CE728B000F810C3 /* RatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		AA7413821CE7476900F810C3 /* ReviewErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewErrorResponse.swift; sourceTree = "<group>"; };
+		AA7413841CE74CE900F810C3 /* ReviewsSuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsSuccessResponse.swift; sourceTree = "<group>"; };
 		AA7413881CE7771700F810C3 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
-		AA74138E1CE78B2500F810C3 /* ReviewCellViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCellViewModelFactory.swift; path = Sources/ViewModel/ReviewCellViewModelFactory.swift; sourceTree = "<group>"; };
-		AA7413901CE78D4800F810C3 /* MessageCellViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCellViewModelFactory.swift; path = Sources/ViewModel/MessageCellViewModelFactory.swift; sourceTree = "<group>"; };
-		AA7413921CE8980000F810C3 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmManager.swift; path = Sources/Model/RealmManager.swift; sourceTree = "<group>"; };
-		AA7413941CE8A9EC00F810C3 /* FilterSwitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterSwitchView.swift; path = Sources/View/FilterSwitchView.swift; sourceTree = "<group>"; };
+		AA74138E1CE78B2500F810C3 /* ReviewCellViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCellViewModelFactory.swift; sourceTree = "<group>"; };
+		AA7413901CE78D4800F810C3 /* MessageCellViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellViewModelFactory.swift; sourceTree = "<group>"; };
+		AA7413921CE8980000F810C3 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		AA7413941CE8A9EC00F810C3 /* FilterSwitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterSwitchView.swift; sourceTree = "<group>"; };
 		AA7413971CE8D0C200F810C3 /* Locale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locale.swift; sourceTree = "<group>"; };
 		AA74139A1CE8D59000F810C3 /* MessageCellStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellStateTests.swift; sourceTree = "<group>"; };
 		AA74139C1CE8D6DE00F810C3 /* ReviewsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewModelTests.swift; sourceTree = "<group>"; };
 		AA74139F1CE8D9E100F810C3 /* ReviewAPIMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewAPIMock.swift; sourceTree = "<group>"; };
-		AA7413A11CE8F2E900F810C3 /* AddReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddReviewViewController.swift; path = Sources/View/AddReviewViewController.swift; sourceTree = "<group>"; };
-		AA7413A31CE8FBDA00F810C3 /* AddReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddReviewViewModel.swift; path = Sources/ViewModel/AddReviewViewModel.swift; sourceTree = "<group>"; };
-		AA7413A51CE8FCFA00F810C3 /* UITextField+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextField+RAC.swift"; path = "Sources/UITextField+RAC.swift"; sourceTree = "<group>"; };
-		AA7413A71CE90ED200F810C3 /* NSDate+GYG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+GYG.swift"; path = "Sources/NSDate+GYG.swift"; sourceTree = "<group>"; };
-		AA7413A91CE9270300F810C3 /* AddReviewViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddReviewViewModelFactory.swift; path = Sources/ViewModel/AddReviewViewModelFactory.swift; sourceTree = "<group>"; };
+		AA7413A11CE8F2E900F810C3 /* AddReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		AA7413A31CE8FBDA00F810C3 /* AddReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewViewModel.swift; sourceTree = "<group>"; };
+		AA7413A51CE8FCFA00F810C3 /* UITextField+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+RAC.swift"; sourceTree = "<group>"; };
+		AA7413A71CE90ED200F810C3 /* NSDate+GYG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+GYG.swift"; sourceTree = "<group>"; };
+		AA7413A91CE9270300F810C3 /* AddReviewViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewViewModelFactory.swift; sourceTree = "<group>"; };
 		AA7413AB1CE92E3A00F810C3 /* AddReviewViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewViewModelTests.swift; sourceTree = "<group>"; };
 		EA1EE95EB792973812202CF3 /* Pods_reviews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_reviews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC198DD19AE6587233A2C431 /* Pods-reviews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reviews/Pods-reviews.debug.xcconfig"; sourceTree = "<group>"; };
@@ -140,11 +140,11 @@
 		AA3FA5331CE63FCE004165B5 = {
 			isa = PBXGroup;
 			children = (
+				1052083F01C1733B27EFD8D3 /* Frameworks */,
+				C666D6E0C05BFD399F644892 /* Pods */,
+				AA3FA53D1CE63FCE004165B5 /* Products */,
 				AA3FA53E1CE63FCF004165B5 /* reviews */,
 				AA3FA5561CE63FCF004165B5 /* reviewsTests */,
-				AA3FA53D1CE63FCE004165B5 /* Products */,
-				C666D6E0C05BFD399F644892 /* Pods */,
-				1052083F01C1733B27EFD8D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,11 +162,11 @@
 			children = (
 				AA7413961CE8D09B00F810C3 /* Extensions */,
 				AA74135B1CE646FA00F810C3 /* Main */,
+				AA7413551CE646B500F810C3 /* Model */,
 				AA74136A1CE65FE600F810C3 /* Networking */,
 				AA74135A1CE646EE00F810C3 /* Resources */,
 				AA7413591CE646E700F810C3 /* View */,
 				AA7413581CE646E000F810C3 /* ViewModel */,
-				AA7413551CE646B500F810C3 /* Model */,
 			);
 			path = reviews;
 			sourceTree = "<group>";
@@ -175,10 +175,10 @@
 			isa = PBXGroup;
 			children = (
 				AA74139E1CE8D9CD00F810C3 /* Mocks */,
-				AA7413991CE8D30100F810C3 /* ViewModel */,
 				AA74138A1CE77B9B00F810C3 /* Model */,
-				AA7413881CE7771700F810C3 /* RealmTestCase.swift */,
+				AA7413991CE8D30100F810C3 /* ViewModel */,
 				AA3FA5591CE63FCF004165B5 /* Info.plist */,
+				AA7413881CE7771700F810C3 /* RealmTestCase.swift */,
 			);
 			path = reviewsTests;
 			sourceTree = "<group>";
@@ -186,32 +186,32 @@
 		AA7413551CE646B500F810C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AA74136F1CE66A2A00F810C3 /* EntityManagers */,
 				AA7413871CE7547800F810C3 /* Entities */,
+				AA74136F1CE66A2A00F810C3 /* EntityManagers */,
 				AA7413861CE7534000F810C3 /* ResponseModels */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AA7413581CE646E000F810C3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				AA74138D1CE78B0D00F810C3 /* Factories */,
-				AA7413661CE65BF100F810C3 /* ReviewsViewModel.swift */,
-				AA7413681CE65D3300F810C3 /* ReviewCellViewModel.swift */,
-				AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */,
 				AA7413A31CE8FBDA00F810C3 /* AddReviewViewModel.swift */,
+				AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */,
+				AA7413681CE65D3300F810C3 /* ReviewCellViewModel.swift */,
+				AA7413661CE65BF100F810C3 /* ReviewsViewModel.swift */,
 			);
-			name = ViewModel;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AA7413591CE646E700F810C3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AA74137A1CE6951600F810C3 /* Reviews */,
 				AA7413611CE657D600F810C3 /* Protocols */,
+				AA74137A1CE6951600F810C3 /* Reviews */,
 			);
-			name = View;
+			path = View;
 			sourceTree = "<group>";
 		};
 		AA74135A1CE646EE00F810C3 /* Resources */ = {
@@ -220,7 +220,7 @@
 				AA3FA5491CE63FCF004165B5 /* Assets.xcassets */,
 				AA3FA54B1CE63FCF004165B5 /* LaunchScreen.storyboard */,
 			);
-			name = Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		AA74135B1CE646FA00F810C3 /* Main */ = {
@@ -229,7 +229,7 @@
 				AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */,
 				AA3FA54E1CE63FCF004165B5 /* Info.plist */,
 			);
-			name = Main;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		AA7413611CE657D600F810C3 /* Protocols */ = {
@@ -237,7 +237,7 @@
 			children = (
 				AA7413621CE657F600F810C3 /* ReusableType.swift */,
 			);
-			name = Protocols;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		AA74136A1CE65FE600F810C3 /* Networking */ = {
@@ -246,17 +246,17 @@
 				AA7413761CE68CCC00F810C3 /* RequestBuilders */,
 				AA7413741CE68A2100F810C3 /* ReviewAPI.swift */,
 			);
-			name = Networking;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		AA74136F1CE66A2A00F810C3 /* EntityManagers */ = {
 			isa = PBXGroup;
 			children = (
 				AA74136B1CE6681B00F810C3 /* EntityManagerType.swift */,
-				AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */,
 				AA7413921CE8980000F810C3 /* RealmManager.swift */,
+				AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */,
 			);
-			name = EntityManagers;
+			path = EntityManagers;
 			sourceTree = "<group>";
 		};
 		AA7413761CE68CCC00F810C3 /* RequestBuilders */ = {
@@ -264,28 +264,28 @@
 			children = (
 				AA7413771CE68CE100F810C3 /* ReviewAPIRequestBuilder.swift */,
 			);
-			name = RequestBuilders;
+			path = RequestBuilders;
 			sourceTree = "<group>";
 		};
 		AA74137A1CE6951600F810C3 /* Reviews */ = {
 			isa = PBXGroup;
 			children = (
 				AA74137B1CE6951F00F810C3 /* Subviews */,
-				AA3FA5411CE63FCF004165B5 /* ReviewsViewController.swift */,
 				AA7413A11CE8F2E900F810C3 /* AddReviewViewController.swift */,
+				AA3FA5411CE63FCF004165B5 /* ReviewsViewController.swift */,
 			);
-			name = Reviews;
+			path = Reviews;
 			sourceTree = "<group>";
 		};
 		AA74137B1CE6951F00F810C3 /* Subviews */ = {
 			isa = PBXGroup;
 			children = (
-				AA74135F1CE6565C00F810C3 /* ReviewCell.swift */,
+				AA7413941CE8A9EC00F810C3 /* FilterSwitchView.swift */,
 				AA7413701CE6753E00F810C3 /* MessageCell.swift */,
 				AA7413801CE728B000F810C3 /* RatingView.swift */,
-				AA7413941CE8A9EC00F810C3 /* FilterSwitchView.swift */,
+				AA74135F1CE6565C00F810C3 /* ReviewCell.swift */,
 			);
-			name = Subviews;
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		AA7413861CE7534000F810C3 /* ResponseModels */ = {
@@ -294,7 +294,7 @@
 				AA7413821CE7476900F810C3 /* ReviewErrorResponse.swift */,
 				AA7413841CE74CE900F810C3 /* ReviewsSuccessResponse.swift */,
 			);
-			name = ResponseModels;
+			path = ResponseModels;
 			sourceTree = "<group>";
 		};
 		AA7413871CE7547800F810C3 /* Entities */ = {
@@ -302,7 +302,7 @@
 			children = (
 				AA7413561CE646D600F810C3 /* Review.swift */,
 			);
-			name = Entities;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		AA74138A1CE77B9B00F810C3 /* Model */ = {
@@ -310,40 +310,40 @@
 			children = (
 				AA3FA5571CE63FCF004165B5 /* ReviewEntityManagerTests.swift */,
 			);
-			name = Model;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AA74138D1CE78B0D00F810C3 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
-				AA74138E1CE78B2500F810C3 /* ReviewCellViewModelFactory.swift */,
-				AA7413901CE78D4800F810C3 /* MessageCellViewModelFactory.swift */,
 				AA7413A91CE9270300F810C3 /* AddReviewViewModelFactory.swift */,
+				AA7413901CE78D4800F810C3 /* MessageCellViewModelFactory.swift */,
+				AA74138E1CE78B2500F810C3 /* ReviewCellViewModelFactory.swift */,
 			);
-			name = Factories;
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		AA7413961CE8D09B00F810C3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */,
-				AA7413A51CE8FCFA00F810C3 /* UITextField+RAC.swift */,
-				AA7413A71CE90ED200F810C3 /* NSDate+GYG.swift */,
 				AA74137C1CE71FF900F810C3 /* Colors.swift */,
 				AA74137E1CE724E700F810C3 /* Fonts.swift */,
 				AA7413971CE8D0C200F810C3 /* Locale.swift */,
+				AA7413A71CE90ED200F810C3 /* NSDate+GYG.swift */,
+				AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */,
+				AA7413A51CE8FCFA00F810C3 /* UITextField+RAC.swift */,
 			);
-			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		AA7413991CE8D30100F810C3 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				AA7413AB1CE92E3A00F810C3 /* AddReviewViewModelTests.swift */,
 				AA74139A1CE8D59000F810C3 /* MessageCellStateTests.swift */,
 				AA74139C1CE8D6DE00F810C3 /* ReviewsViewModelTests.swift */,
-				AA7413AB1CE92E3A00F810C3 /* AddReviewViewModelTests.swift */,
 			);
-			name = ViewModel;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		AA74139E1CE8D9CD00F810C3 /* Mocks */ = {
@@ -351,7 +351,7 @@
 			children = (
 				AA74139F1CE8D9E100F810C3 /* ReviewAPIMock.swift */,
 			);
-			name = Mocks;
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		C666D6E0C05BFD399F644892 /* Pods */ = {
@@ -626,6 +626,7 @@
 				AA3FA54C1CE63FCF004165B5 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -719,7 +720,7 @@
 			baseConfigurationReference = FC198DD19AE6587233A2C431 /* Pods-reviews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = reviews/Info.plist;
+				INFOPLIST_FILE = reviews/Main/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.piccolo.reviews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -731,7 +732,7 @@
 			baseConfigurationReference = 101966482226D8A9D1F39BEC /* Pods-reviews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = reviews/Info.plist;
+				INFOPLIST_FILE = reviews/Main/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.piccolo.reviews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
