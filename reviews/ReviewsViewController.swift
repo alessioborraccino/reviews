@@ -94,7 +94,7 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     @objc private func didTapAdd() {
-        let addReviewViewController = AddReviewViewController(addReviewViewModel: AddReviewViewModel())
+        let addReviewViewController = AddReviewViewController(addReviewViewModel: reviewsViewModel.addReviewViewModel())
         navigationController?.pushViewController(addReviewViewController, animated: true)
     }
 }

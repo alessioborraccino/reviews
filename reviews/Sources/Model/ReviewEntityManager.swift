@@ -12,6 +12,7 @@ import RealmSwift
 protocol ReviewEntityManagerType {
     func allReviews() -> [Review]
     func cacheReviews(reviews: [Review])
+    func maxReviewID() -> Int
 }
 
 class ReviewEntityManager : RealmManager, EntityManagerType, ReviewEntityManagerType {
@@ -21,7 +22,9 @@ class ReviewEntityManager : RealmManager, EntityManagerType, ReviewEntityManager
     func allReviews() -> [Review] {
         return Array(realm.objects(EntityType).sorted("reviewID", ascending: false))
     }
-    
+    func maxReviewID() -> Int {
+        return realm.objects(EntityType).max("reviewID") ?? 0
+    }
     func cacheReviews(reviews: [Review]) {
         do {
             try self.saveContentsOf(reviews)

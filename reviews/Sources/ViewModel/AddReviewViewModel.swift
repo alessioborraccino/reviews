@@ -9,9 +9,20 @@
 import ReactiveCocoa
 import Result
 
-class AddReviewViewModel {
+protocol AddReviewViewModelType {
+    var author: String { get set }
+    var title: String  { get set }
+    var message: String { get set }
+    var rating: Int { get set }
 
-    private let reviewEntityManager : ReviewEntityManagerType
+    var didSaveReview : Signal<Review?,NoError> { get }
+    var didTryToSaveNotValidReview : Signal<Void,NoError> { get }
+
+    func addReview()
+}
+
+class AddReviewViewModel : AddReviewViewModelType {
+
     private let reviewAPI : ReviewAPIType
 
     private var id: Int?
@@ -20,24 +31,24 @@ class AddReviewViewModel {
     var message: String = ""
     var rating: Int = 5
 
-    private var review : Review?
-
-    lazy var didSaveReviewSuccessfully : Signal<Bool,NoError> = {
-        return self.didSaveReview
+    private let (didSaveReviewOrNil, didSaveReviewSink) = Signal<Review?, NoError>.pipe()
+    private(set) lazy var didSaveReview : Signal<Review?,NoError> = {
+        return self.didSaveReviewOrNil
     }()
 
-    private let (didSaveReview, didSaveReviewSink) = Signal<Bool, NoError>.pipe()
+    private let (notValidReview, notValidReviewSink) = Signal<Void, NoError>.pipe()
+    private(set) lazy var didTryToSaveNotValidReview : Signal<Void,NoError> = {
+        return self.notValidReview
+    }()
 
-    init(reviewEntityManager: ReviewEntityManagerType = ReviewEntityManager(),
-         reviewAPI : ReviewAPIType = ReviewAPI()) {
-        self.reviewEntityManager = reviewEntityManager
+    init(reviewAPI : ReviewAPIType = ReviewAPI()) {
         self.reviewAPI = reviewAPI
     }
 
     func addReview() {
 
-        guard !author.isEmpty && !title.isEmpty && !message.isEmpty else {
-            didSaveReviewSink.sendNext(false)
+        guard areFieldsValid() else {
+            notValidReviewSink.sendNext()
             return
         }
 
@@ -46,20 +57,17 @@ class AddReviewViewModel {
             switch event {
             case .Next(let id):
                 let updatedReview = self.updatedReviewFromReview(review, withID: id)
-                self.review = updatedReview
-                self.didSaveReviewSink.sendNext(true)
+                self.didSaveReviewSink.sendNext(updatedReview)
             case .Failed:
-                self.didSaveReviewSink.sendNext(false)
+                self.didSaveReviewSink.sendNext(nil)
             default:
                 break
             }
         }
     }
 
-    func cacheReview() {
-        if let review = review {
-            self.reviewEntityManager.cacheReviews([review])
-        }
+    private func areFieldsValid() -> Bool {
+        return !author.isEmpty && !title.isEmpty && !message.isEmpty
     }
     private func reviewForRequest() -> Review {
         return Review(id: 0, title: title, message: message, rating: rating, author: author)

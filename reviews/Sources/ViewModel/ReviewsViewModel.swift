@@ -23,6 +23,7 @@ protocol ReviewsViewModelType {
     
     func reviewCellViewModelForIndex(index: Int) -> ReviewCellViewModelType
     func messageCellViewModel() -> MessageCellViewModelType
+    func addReviewViewModel() -> AddReviewViewModelType
 }
 
 class ReviewsViewModel : ReviewsViewModelType {
@@ -39,6 +40,7 @@ class ReviewsViewModel : ReviewsViewModelType {
     private let reviewAPI : ReviewAPIType
     private let reviewCellViewModelFactory : ReviewCellViewModelFactoryType
     private let messageCellViewModelFactory : MessageCellViewModelFactoryType
+    private let addReviewViewModelFactory : AddReviewViewModelFactoryType
 
     // MARK: Model Properties
 
@@ -49,12 +51,15 @@ class ReviewsViewModel : ReviewsViewModelType {
     init(reviewEntityManager: ReviewEntityManagerType = ReviewEntityManager(),
          reviewAPI: ReviewAPIType = ReviewAPI(),
          reviewCellViewModelFactory: ReviewCellViewModelFactoryType = ReviewCellViewModelFactory(),
-         messageCellViewModelFactory: MessageCellViewModelFactoryType = MessageCellViewModelFactory()
+         messageCellViewModelFactory: MessageCellViewModelFactoryType = MessageCellViewModelFactory(),
+         addReviewViewModelFactory: AddReviewViewModelFactoryType = AddReviewViewModelFactory()
         ) {
         self.reviewEntityManager = reviewEntityManager
         self.reviewAPI = reviewAPI
         self.reviewCellViewModelFactory = reviewCellViewModelFactory
         self.messageCellViewModelFactory = messageCellViewModelFactory
+        self.addReviewViewModelFactory = addReviewViewModelFactory
+        self.reviews.value = self.reviewEntityManager.allReviews()
     }
 
     var reviewsCount : Int {
@@ -109,8 +114,7 @@ class ReviewsViewModel : ReviewsViewModelType {
     // MARK: Public Methods
 
     func loadReviews() {
-        let areShownReviewsCached = self.messageCellState.value == .NoConnectionCached
-        loadNextReviews(refreshExistingReviews: areShownReviewsCached)
+        searchReviews(perPageNumber: self.currentReviewPages())
     }
     func cacheReviews() {
         self.reviewEntityManager.cacheReviews(self.reviews.value)
@@ -125,7 +129,15 @@ class ReviewsViewModel : ReviewsViewModelType {
     func messageCellViewModel() -> MessageCellViewModelType {
         return messageCellViewModelFactory.model(state: messageCellState.value)
     }
-
+    func addReviewViewModel() -> AddReviewViewModelType {
+        let addReviewViewModel = addReviewViewModelFactory.model()
+        addReviewViewModel.didSaveReview.observeNext { review in
+            if let review = review {
+                self.updateReviewsWithNewReviews([review])
+            }
+        }
+        return addReviewViewModel
+    }
     // MARK: Private Methods
 
     private func filteredReviews(reviews: [Review]) -> [Review] {
@@ -146,14 +158,6 @@ class ReviewsViewModel : ReviewsViewModelType {
         }
     }
 
-    private func loadNextReviews(refreshExistingReviews refreshExistingReviews: Bool) {
-        if refreshExistingReviews {
-            searchReviews(numberOfReviews: self.reviews.value.count + Constants.reviewsPerPage, perPageNumber: 0)
-        } else {
-            searchReviews(perPageNumber: self.currentReviewPages())
-        }
-    }
-
     private func currentReviewPages() -> Int {
         return reviews.value.count / Constants.reviewsPerPage
     }
@@ -165,11 +169,10 @@ class ReviewsViewModel : ReviewsViewModelType {
         reviewAPI.reviews(count: count, pageNumber: pageNumber).start { [unowned self] event in
             switch event {
             case .Next(let reviews):
-                self.updateReviewsWithNewReviews(reviews, isFirstPage: pageNumber == 0)
+                self.updateReviewsWithNewReviews(reviews)
                 self.messageCellState.value = .WaitingToLoad
             case .Failed(let error):
                 let cachedReviews = self.reviewEntityManager.allReviews()
-                self.updateReviewsWithNewReviews(cachedReviews, isFirstPage: true)
                 self.updateMessageCellStateWithError(error, isShowingCachedReviews: !cachedReviews.isEmpty)
             default:
                 break
@@ -177,14 +180,12 @@ class ReviewsViewModel : ReviewsViewModelType {
         }
     }
 
-    private func updateReviewsWithNewReviews(reviews: [Review], isFirstPage: Bool) {
-        var newReviews : [Review]
-        if isFirstPage {
-            newReviews = []
-        } else {
-            newReviews = self.reviews.value
-        }
+    private func updateReviewsWithNewReviews(reviews: [Review]) {
+        var newReviews = self.reviews.value
         newReviews.appendContentsOf(reviews)
+        newReviews.sortInPlace { (first, second) -> Bool in
+            return first.reviewID > second.reviewID
+        }
         self.reviews.value = newReviews
     }
 

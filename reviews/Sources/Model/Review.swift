@@ -42,7 +42,7 @@ class Review : Object, Mappable {
         mapping(map)
     }
 
-    convenience init(id: Int, rating: Int = 5, title: String = "Title", message: String = "Message", author: String, foreignLanguage: Bool = false) {
+    convenience init(id: Int, rating: Int = 5, title: String = "Title", message: String = "Message", author: String = "Author", foreignLanguage: Bool = false) {
         self.init()
         self.reviewID = id
         self.rating = rating

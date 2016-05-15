@@ -24,9 +24,19 @@ protocol ReviewAPIType {
 
 class ReviewAPI : ReviewAPIType {
 
+    //MARK : Constants
+
     private let host : String = "https://www.getyourguide.com"
     private let city : String = "berlin-l17"
     private let tour : String = "tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776"
+
+    // MARK: Dependencies
+
+    private let reviewEntityManager : ReviewEntityManagerType
+
+    init(reviewEntityManager: ReviewEntityManagerType = ReviewEntityManager()) {
+        self.reviewEntityManager = reviewEntityManager
+    }
 
     func reviews(count count: Int, pageNumber: Int) -> SignalProducer<[Review],ReviewAPIError> {
 
@@ -55,7 +65,7 @@ class ReviewAPI : ReviewAPIType {
     }
     func addReview(review: Review) -> SignalProducer<Int,ReviewAPIError> {
 
-        return SignalProducer { observer, disposable in
+        return SignalProducer { [unowned self] observer, disposable in
 
             let _ = ReviewAPIRequestBuilder.AddReview(
                 city: self.city,
@@ -80,7 +90,7 @@ class ReviewAPI : ReviewAPIType {
                 }
                 observer.sendCompleted()
             })*/
-            let id = 500000
+            let id = self.reviewEntityManager.maxReviewID() + 1 //Should be managed by backend
             observer.sendNext(id)
             observer.sendCompleted()
         }

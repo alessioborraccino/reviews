@@ -21,9 +21,9 @@ class ReviewEntityManagerTests: RealmTestCase {
     func testCacheReviews() {
         XCTAssertEqual(testReviewEntityManager.all().count, 0)
         testReviewEntityManager.cacheReviews([
-            Review(id:0),
-            Review(id:1),
-            Review(id:2)
+            Review(id: 0),
+            Review(id: 1),
+            Review(id: 2)
             ])
         XCTAssertEqual(testReviewEntityManager.all().count, 3)
     }
@@ -32,9 +32,9 @@ class ReviewEntityManagerTests: RealmTestCase {
         XCTAssertEqual(testReviewEntityManager.all().count, 0)
         do {
             try testReviewEntityManager.saveContentsOf([
-                Review(id:0),
-                Review(id:1),
-                Review(id:2)
+                Review(id: 0),
+                Review(id: 1),
+                Review(id: 2)
             ])
             XCTAssertEqual(testReviewEntityManager.allReviews().count, 3)
         } catch {

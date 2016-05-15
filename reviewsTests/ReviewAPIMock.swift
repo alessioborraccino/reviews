@@ -25,4 +25,10 @@ class ReviewAPIMock : ReviewAPI {
             observer.sendCompleted()
         }
     }
+
+    override func addReview(review: Review) -> SignalProducer<Int, ReviewAPIError> {
+        return SignalProducer { [unowned self] observer, disposable in
+            observer.sendNext(self.counter + 1 )
+        }
+    }
 }

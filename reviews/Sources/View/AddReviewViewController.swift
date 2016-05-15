@@ -11,7 +11,7 @@ import ReactiveCocoa
 
 class AddReviewViewController: UIViewController {
 
-    private var viewModel : AddReviewViewModel
+    private var viewModel : AddReviewViewModelType
 
     private lazy var scrollView : UIScrollView =  {
         return UIScrollView()
@@ -66,7 +66,7 @@ class AddReviewViewController: UIViewController {
         return textView
     }()
 
-    init<T: AddReviewViewModel>(addReviewViewModel: T) {
+    init(addReviewViewModel: AddReviewViewModelType) {
         self.viewModel = addReviewViewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -146,14 +146,13 @@ class AddReviewViewController: UIViewController {
         messageTextView.racTextChanged().startWithNext { [unowned self] text in
             self.viewModel.message = text ?? ""
         }
-        viewModel.didSaveReviewSuccessfully.observeOn(UIScheduler()).observeNext { [unowned self] success in
-            if !success {
+        viewModel.didSaveReview.observeOn(UIScheduler()).observeNext { [unowned self] review in
+            if let _ = review {
+                self.navigationController?.popViewControllerAnimated(true)
+            } else {
                 let alert = UIAlertController(title: "Sorry", message: "Could not send it", preferredStyle: .Alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
-            } else {
-                self.viewModel.cacheReview()
-                self.navigationController?.popViewControllerAnimated(true)
             }
         }
     }

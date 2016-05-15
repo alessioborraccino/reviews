@@ -14,8 +14,8 @@ class MessageCellStateTests: XCTestCase {
 
     func testEquality() {
 
-        XCTAssertEqual(MessageCellState.Cached, MessageCellState.Cached)
-        XCTAssertNotEqual(MessageCellState.Cached, MessageCellState.Loading)
+        XCTAssertEqual(MessageCellState.NoConnectionCached, MessageCellState.NoConnectionCached)
+        XCTAssertNotEqual(MessageCellState.NoConnectionCached, MessageCellState.Loading)
         XCTAssertEqual(MessageCellState.APIError(message: "hi"), MessageCellState.APIError(message: "hi"))
         XCTAssertNotEqual(MessageCellState.APIError(message: "hi"), MessageCellState.APIError(message: "ho"))
     }
