@@ -19,6 +19,7 @@ enum ReviewAPIError : ErrorType {
 
 protocol ReviewAPIType {
     func reviews(count count: Int, pageNumber: Int) -> SignalProducer<[Review],ReviewAPIError>
+    func addReview(review: Review) -> SignalProducer<Int,ReviewAPIError>
 }
 
 class ReviewAPI : ReviewAPIType {
@@ -50,6 +51,38 @@ class ReviewAPI : ReviewAPIType {
                 }
                 observer.sendCompleted()
             })
+        }
+    }
+    func addReview(review: Review) -> SignalProducer<Int,ReviewAPIError> {
+
+        return SignalProducer { observer, disposable in
+
+            let _ = ReviewAPIRequestBuilder.AddReview(
+                city: self.city,
+                tour: self.tour,
+                author: review.author,
+                title: review.title, 
+                message: review.message,
+                rating: review.rating, //TODO Formatting
+                date: NSDate() 
+             ).URLRequest(host: self.host)
+            /*
+            Alamofire.request(request).validate().responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in
+
+                if let _ = response.result.error {
+                    observer.sendFailed(.NetworkFailed)
+                } else if let success = Mapper<AddReviewResponse>().map(response.result.value), reviews = success.reviews {
+                    observer.sendNext(reviews)
+                } else if let error = Mapper<AddReviewErrorResponse>().map(response.result.value), message = error.message {
+                    observer.sendFailed(.APIError(message: message))
+                } else {
+                    observer.sendFailed(.ParsingFailed)
+                }
+                observer.sendCompleted()
+            })*/
+            let id = 500000
+            observer.sendNext(id)
+            observer.sendCompleted()
         }
     }
 }

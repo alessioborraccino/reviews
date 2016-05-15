@@ -15,6 +15,12 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     private let reviewsViewModel : ReviewsViewModelType
 
+    private lazy var foreignLanguageFilterSwitch : FilterSwitchView =  {
+        let filterSwitch = FilterSwitchView()
+        filterSwitch.configureWithTitle("Only from your country")
+        return filterSwitch
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRectZero, style: .Plain)
         tableView.delegate = self
@@ -37,7 +43,9 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Reviews"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: #selector(didTapAdd))
         view.addSubview(tableView)
+        view.addSubview(foreignLanguageFilterSwitch)
         setDefaultConstraints()
         bind()
     }
@@ -46,28 +54,48 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewWillAppear(animated)
         reviewsViewModel.loadReviews()
     }
+
     private func setDefaultConstraints() {
+        foreignLanguageFilterSwitch.snp_makeConstraints { (make) in
+            make.top.equalTo(view.snp_top)
+            make.leading.equalTo(view.snp_leading)
+            make.trailing.equalTo(view.snp_trailing)
+            make.height.equalTo(66)
+        }
+
         tableView.snp_makeConstraints { (make) in
-            make.edges.equalTo(view)
+            make.top.equalTo(foreignLanguageFilterSwitch.snp_bottom)
+            make.leading.equalTo(view.snp_leading)
+            make.trailing.equalTo(view.snp_trailing)
+            make.bottom.equalTo(view.snp_bottom)
         }
     }
 
     private func bind() {
         let updateReviewsSignal = zip([
             reviewsViewModel.needsToInsertReviewsAtIndexPaths,
-            reviewsViewModel.needsToDeleteReviewsAtIndexPaths,
-            reviewsViewModel.needsToUpdateReviewsAtIndexPaths
+            reviewsViewModel.needsToUpdateReviewsAtIndexPaths,
+            reviewsViewModel.needsToDeleteReviewsAtIndexPaths
         ])
-        updateReviewsSignal.observeOn(UIScheduler()).startWithNext { [unowned self] paths in
+        updateReviewsSignal.observeOn(UIScheduler()).observeNext { [unowned self] paths in
             self.tableView.beginUpdates()
             self.tableView.insertRowsAtIndexPaths(paths[0], withRowAnimation: .Fade)
-            self.tableView.deleteRowsAtIndexPaths(paths[1], withRowAnimation: .Fade)
-            self.tableView.reloadRowsAtIndexPaths(paths[2], withRowAnimation: .Fade)
+            self.tableView.reloadRowsAtIndexPaths(paths[1], withRowAnimation: .Fade)
+            self.tableView.deleteRowsAtIndexPaths(paths[2], withRowAnimation: .Fade)
             self.tableView.endUpdates()
+            self.reviewsViewModel.cacheReviews()
         }
-        reviewsViewModel.needsToReloadMessage.observeOn(UIScheduler()).startWithNext { [unowned self] in
+        reviewsViewModel.needsToReloadMessage.observeOn(UIScheduler()).observeNext{ [unowned self] in
             self.tableView.reloadSections(NSIndexSet(index: ReviewTableSection.Message.rawValue), withRowAnimation: .None)
         }
+        foreignLanguageFilterSwitch.didChangeSwitchTo.startWithNext{ [unowned self] on in
+            self.reviewsViewModel.showForeignLanguageReviews(!on)
+        }
+    }
+
+    @objc private func didTapAdd() {
+        let addReviewViewController = AddReviewViewController(addReviewViewModel: AddReviewViewModel())
+        navigationController?.pushViewController(addReviewViewController, animated: true)
     }
 }
 
@@ -133,7 +161,9 @@ extension ReviewsViewController {
             break 
         }
     }
-
+    func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         let lastVisibleCell = tableView.visibleCells.last
         let path = tableView.indexPathForCell(lastVisibleCell!)

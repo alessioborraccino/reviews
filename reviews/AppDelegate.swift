@@ -54,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationController.navigationBar.titleTextAttributes = [
             NSForegroundColorAttributeName: UIColor.whiteColor()
         ]
+        navigationController.navigationBar.translucent = false 
         return navigationController
     }
 }

@@ -9,73 +9,40 @@
 import Foundation
 import RealmSwift
 
-public protocol EntityManagerType {
+protocol EntityManagerType : RealmManagerType {
 
     associatedtype EntityType : Object
 
-    var realm: Realm { get }
-
     func all() -> [EntityType]
-
     func saveContentsOf(entities: [EntityType]) throws
-    func deleteContentsOf(entities: [EntityType]) throws
-
 }
-
 
 extension EntityManagerType {
 
-    var realm: Realm {
-        return Data.defaultRealm
-    }
-
     func all() -> [EntityType] {
-        return Array(queryset())
+        return Array(realm.objects(EntityType))
     }
-
-    /**
-     Creates or updates entities in the specified realm.
-
-     - parameter entity: entity to be saved
-     */
 
     func saveContentsOf(entities: [EntityType]) throws {
         let canUpdate = EntityType.primaryKey() != nil
-        try realmWriteOperation {
-            for entity in entities {
-                realm.add(entity, update: canUpdate)
-            }
+        try writeToRealm {
+            realm.add(entities, update: canUpdate)
         }
     }
 
-    func deleteContentsOf(entities: [EntityType]) throws {
-        try realmWriteOperation {
-            for entity in entities {
-                realm.delete(entity)
+    private func writeToRealm(@noescape realmTransaction: () -> ()) throws {
+
+        if realm.inWriteTransaction {
+            realmTransaction()
+        } else {
+            do {
+                try realm.write {
+                    realmTransaction()
+                }
+                return
+            } catch let error {
+                throw error
             }
         }
-    }
-    /**
-     Executes given block, wrapping it in `realm.write` only if needed.
-
-     - parameter block: operation to be executed.
-     */
-    private func realmWriteOperation(@noescape block: () -> ()) throws {
-        guard !realm.inWriteTransaction else {
-            block()
-            return
-        }
-        do {
-            try realm.write {
-                block()
-            }
-            return
-        } catch let error {
-            throw error
-        }
-    }
-
-    private func queryset() -> Results<EntityType> {
-        return realm.objects(EntityType)
     }
 }

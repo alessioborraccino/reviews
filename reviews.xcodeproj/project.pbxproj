@@ -13,7 +13,6 @@
 		AA3FA54D1CE63FCF004165B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA3FA54B1CE63FCF004165B5 /* LaunchScreen.storyboard */; };
 		AA3FA5581CE63FCF004165B5 /* ReviewEntityManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3FA5571CE63FCF004165B5 /* ReviewEntityManagerTests.swift */; };
 		AA7413571CE646D600F810C3 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413561CE646D600F810C3 /* Review.swift */; };
-		AA74135E1CE64F2F00F810C3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74135D1CE64F2F00F810C3 /* Data.swift */; };
 		AA7413601CE6565C00F810C3 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74135F1CE6565C00F810C3 /* ReviewCell.swift */; };
 		AA7413631CE657F600F810C3 /* ReusableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413621CE657F600F810C3 /* ReusableType.swift */; };
 		AA7413651CE65A2400F810C3 /* UITableView+ReusableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */; };
@@ -33,6 +32,16 @@
 		AA7413891CE7771700F810C3 /* RealmTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413881CE7771700F810C3 /* RealmTestCase.swift */; };
 		AA74138F1CE78B2500F810C3 /* ReviewCellViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74138E1CE78B2500F810C3 /* ReviewCellViewModelFactory.swift */; };
 		AA7413911CE78D4800F810C3 /* MessageCellViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413901CE78D4800F810C3 /* MessageCellViewModelFactory.swift */; };
+		AA7413931CE8980000F810C3 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413921CE8980000F810C3 /* RealmManager.swift */; };
+		AA7413951CE8A9EC00F810C3 /* FilterSwitchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413941CE8A9EC00F810C3 /* FilterSwitchView.swift */; };
+		AA7413981CE8D0C200F810C3 /* Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413971CE8D0C200F810C3 /* Locale.swift */; };
+		AA74139B1CE8D59000F810C3 /* MessageCellStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74139A1CE8D59000F810C3 /* MessageCellStateTests.swift */; };
+		AA74139D1CE8D6DE00F810C3 /* ReviewsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74139C1CE8D6DE00F810C3 /* ReviewsViewModelTests.swift */; };
+		AA7413A01CE8D9E100F810C3 /* ReviewAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA74139F1CE8D9E100F810C3 /* ReviewAPIMock.swift */; };
+		AA7413A21CE8F2E900F810C3 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413A11CE8F2E900F810C3 /* AddReviewViewController.swift */; };
+		AA7413A41CE8FBDA00F810C3 /* AddReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413A31CE8FBDA00F810C3 /* AddReviewViewModel.swift */; };
+		AA7413A61CE8FCFA00F810C3 /* UITextField+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413A51CE8FCFA00F810C3 /* UITextField+RAC.swift */; };
+		AA7413A81CE90ED200F810C3 /* NSDate+GYG.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413A71CE90ED200F810C3 /* NSDate+GYG.swift */; };
 		D5A9FA3949490248DA18BC99 /* Pods_reviewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AF315E7D4592FA74B212ED /* Pods_reviewsTests.framework */; };
 		FF4D0BDC983B6E453BC99CAE /* Pods_reviews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1EE95EB792973812202CF3 /* Pods_reviews.framework */; };
 /* End PBXBuildFile section */
@@ -62,7 +71,6 @@
 		AA3FA5571CE63FCF004165B5 /* ReviewEntityManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEntityManagerTests.swift; sourceTree = "<group>"; };
 		AA3FA5591CE63FCF004165B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA7413561CE646D600F810C3 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Review.swift; path = Sources/Model/Review.swift; sourceTree = "<group>"; };
-		AA74135D1CE64F2F00F810C3 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Sources/Model/Data.swift; sourceTree = "<group>"; };
 		AA74135F1CE6565C00F810C3 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCell.swift; path = Sources/View/ReviewCell.swift; sourceTree = "<group>"; };
 		AA7413621CE657F600F810C3 /* ReusableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReusableType.swift; path = Sources/ViewModel/ReusableType.swift; sourceTree = "<group>"; };
 		AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+ReusableType.swift"; path = "Sources/View/UITableView+ReusableType.swift"; sourceTree = "<group>"; };
@@ -82,6 +90,16 @@
 		AA7413881CE7771700F810C3 /* RealmTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmTestCase.swift; sourceTree = "<group>"; };
 		AA74138E1CE78B2500F810C3 /* ReviewCellViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReviewCellViewModelFactory.swift; path = Sources/ViewModel/ReviewCellViewModelFactory.swift; sourceTree = "<group>"; };
 		AA7413901CE78D4800F810C3 /* MessageCellViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCellViewModelFactory.swift; path = Sources/ViewModel/MessageCellViewModelFactory.swift; sourceTree = "<group>"; };
+		AA7413921CE8980000F810C3 /* RealmManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RealmManager.swift; path = Sources/Model/RealmManager.swift; sourceTree = "<group>"; };
+		AA7413941CE8A9EC00F810C3 /* FilterSwitchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FilterSwitchView.swift; path = Sources/View/FilterSwitchView.swift; sourceTree = "<group>"; };
+		AA7413971CE8D0C200F810C3 /* Locale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Locale.swift; sourceTree = "<group>"; };
+		AA74139A1CE8D59000F810C3 /* MessageCellStateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellStateTests.swift; sourceTree = "<group>"; };
+		AA74139C1CE8D6DE00F810C3 /* ReviewsViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewModelTests.swift; sourceTree = "<group>"; };
+		AA74139F1CE8D9E100F810C3 /* ReviewAPIMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewAPIMock.swift; sourceTree = "<group>"; };
+		AA7413A11CE8F2E900F810C3 /* AddReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddReviewViewController.swift; path = Sources/View/AddReviewViewController.swift; sourceTree = "<group>"; };
+		AA7413A31CE8FBDA00F810C3 /* AddReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddReviewViewModel.swift; path = Sources/ViewModel/AddReviewViewModel.swift; sourceTree = "<group>"; };
+		AA7413A51CE8FCFA00F810C3 /* UITextField+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITextField+RAC.swift"; path = "Sources/UITextField+RAC.swift"; sourceTree = "<group>"; };
+		AA7413A71CE90ED200F810C3 /* NSDate+GYG.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+GYG.swift"; path = "Sources/NSDate+GYG.swift"; sourceTree = "<group>"; };
 		EA1EE95EB792973812202CF3 /* Pods_reviews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_reviews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC198DD19AE6587233A2C431 /* Pods-reviews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reviews/Pods-reviews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -138,6 +156,7 @@
 		AA3FA53E1CE63FCF004165B5 /* reviews */ = {
 			isa = PBXGroup;
 			children = (
+				AA7413961CE8D09B00F810C3 /* Extensions */,
 				AA74135B1CE646FA00F810C3 /* Main */,
 				AA74136A1CE65FE600F810C3 /* Networking */,
 				AA74135A1CE646EE00F810C3 /* Resources */,
@@ -151,6 +170,8 @@
 		AA3FA5561CE63FCF004165B5 /* reviewsTests */ = {
 			isa = PBXGroup;
 			children = (
+				AA74139E1CE8D9CD00F810C3 /* Mocks */,
+				AA7413991CE8D30100F810C3 /* ViewModel */,
 				AA74138A1CE77B9B00F810C3 /* Model */,
 				AA7413881CE7771700F810C3 /* RealmTestCase.swift */,
 				AA3FA5591CE63FCF004165B5 /* Info.plist */,
@@ -164,7 +185,6 @@
 				AA74136F1CE66A2A00F810C3 /* EntityManagers */,
 				AA7413871CE7547800F810C3 /* Entities */,
 				AA7413861CE7534000F810C3 /* ResponseModels */,
-				AA74135D1CE64F2F00F810C3 /* Data.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -176,6 +196,7 @@
 				AA7413661CE65BF100F810C3 /* ReviewsViewModel.swift */,
 				AA7413681CE65D3300F810C3 /* ReviewCellViewModel.swift */,
 				AA7413721CE67C9F00F810C3 /* MessageCellViewModel.swift */,
+				AA7413A31CE8FBDA00F810C3 /* AddReviewViewModel.swift */,
 			);
 			name = ViewModel;
 			sourceTree = "<group>";
@@ -184,7 +205,6 @@
 			isa = PBXGroup;
 			children = (
 				AA74137A1CE6951600F810C3 /* Reviews */,
-				AA7413791CE6950600F810C3 /* Extensions */,
 				AA7413611CE657D600F810C3 /* Protocols */,
 			);
 			name = View;
@@ -204,8 +224,6 @@
 			children = (
 				AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */,
 				AA3FA54E1CE63FCF004165B5 /* Info.plist */,
-				AA74137C1CE71FF900F810C3 /* Colors.swift */,
-				AA74137E1CE724E700F810C3 /* Fonts.swift */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -232,6 +250,7 @@
 			children = (
 				AA74136B1CE6681B00F810C3 /* EntityManagerType.swift */,
 				AA74136D1CE6695700F810C3 /* ReviewEntityManager.swift */,
+				AA7413921CE8980000F810C3 /* RealmManager.swift */,
 			);
 			name = EntityManagers;
 			sourceTree = "<group>";
@@ -244,19 +263,12 @@
 			name = RequestBuilders;
 			sourceTree = "<group>";
 		};
-		AA7413791CE6950600F810C3 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
 		AA74137A1CE6951600F810C3 /* Reviews */ = {
 			isa = PBXGroup;
 			children = (
 				AA74137B1CE6951F00F810C3 /* Subviews */,
 				AA3FA5411CE63FCF004165B5 /* ReviewsViewController.swift */,
+				AA7413A11CE8F2E900F810C3 /* AddReviewViewController.swift */,
 			);
 			name = Reviews;
 			sourceTree = "<group>";
@@ -267,6 +279,7 @@
 				AA74135F1CE6565C00F810C3 /* ReviewCell.swift */,
 				AA7413701CE6753E00F810C3 /* MessageCell.swift */,
 				AA7413801CE728B000F810C3 /* RatingView.swift */,
+				AA7413941CE8A9EC00F810C3 /* FilterSwitchView.swift */,
 			);
 			name = Subviews;
 			sourceTree = "<group>";
@@ -303,6 +316,36 @@
 				AA7413901CE78D4800F810C3 /* MessageCellViewModelFactory.swift */,
 			);
 			name = Factories;
+			sourceTree = "<group>";
+		};
+		AA7413961CE8D09B00F810C3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AA7413641CE65A2400F810C3 /* UITableView+ReusableType.swift */,
+				AA7413A51CE8FCFA00F810C3 /* UITextField+RAC.swift */,
+				AA7413A71CE90ED200F810C3 /* NSDate+GYG.swift */,
+				AA74137C1CE71FF900F810C3 /* Colors.swift */,
+				AA74137E1CE724E700F810C3 /* Fonts.swift */,
+				AA7413971CE8D0C200F810C3 /* Locale.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		AA7413991CE8D30100F810C3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AA74139A1CE8D59000F810C3 /* MessageCellStateTests.swift */,
+				AA74139C1CE8D6DE00F810C3 /* ReviewsViewModelTests.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		AA74139E1CE8D9CD00F810C3 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				AA74139F1CE8D9E100F810C3 /* ReviewAPIMock.swift */,
+			);
+			name = Mocks;
 			sourceTree = "<group>";
 		};
 		C666D6E0C05BFD399F644892 /* Pods */ = {
@@ -527,15 +570,21 @@
 				AA7413851CE74CE900F810C3 /* ReviewsSuccessResponse.swift in Sources */,
 				AA7413601CE6565C00F810C3 /* ReviewCell.swift in Sources */,
 				AA74137F1CE724E700F810C3 /* Fonts.swift in Sources */,
+				AA7413931CE8980000F810C3 /* RealmManager.swift in Sources */,
+				AA7413981CE8D0C200F810C3 /* Locale.swift in Sources */,
 				AA7413711CE6753E00F810C3 /* MessageCell.swift in Sources */,
 				AA74138F1CE78B2500F810C3 /* ReviewCellViewModelFactory.swift in Sources */,
 				AA3FA5401CE63FCF004165B5 /* AppDelegate.swift in Sources */,
 				AA74137D1CE71FF900F810C3 /* Colors.swift in Sources */,
+				AA7413A21CE8F2E900F810C3 /* AddReviewViewController.swift in Sources */,
 				AA7413691CE65D3300F810C3 /* ReviewCellViewModel.swift in Sources */,
+				AA7413A81CE90ED200F810C3 /* NSDate+GYG.swift in Sources */,
 				AA74136E1CE6695700F810C3 /* ReviewEntityManager.swift in Sources */,
+				AA7413A61CE8FCFA00F810C3 /* UITextField+RAC.swift in Sources */,
 				AA7413651CE65A2400F810C3 /* UITableView+ReusableType.swift in Sources */,
 				AA7413571CE646D600F810C3 /* Review.swift in Sources */,
-				AA74135E1CE64F2F00F810C3 /* Data.swift in Sources */,
+				AA7413951CE8A9EC00F810C3 /* FilterSwitchView.swift in Sources */,
+				AA7413A41CE8FBDA00F810C3 /* AddReviewViewModel.swift in Sources */,
 				AA7413781CE68CE100F810C3 /* ReviewAPIRequestBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,8 +593,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA7413A01CE8D9E100F810C3 /* ReviewAPIMock.swift in Sources */,
 				AA3FA5581CE63FCF004165B5 /* ReviewEntityManagerTests.swift in Sources */,
 				AA7413891CE7771700F810C3 /* RealmTestCase.swift in Sources */,
+				AA74139D1CE8D6DE00F810C3 /* ReviewsViewModelTests.swift in Sources */,
+				AA74139B1CE8D59000F810C3 /* MessageCellStateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
