@@ -38,6 +38,9 @@ Due to time restrictions, I did not fully implement some of the features, causin
 
 - While submitting a review, it is not (yet) possible to send rating. 
 - Reviews will never get refreshed (so if some review get modified, once you downloaded you will never see it)
+
+I actually implemented a version where refreshing was happening, but it was implied that the api call always synchronized with the reviews, and that was going to exclude the newly entered submitted review from the app (because the api was mocked), unless by complicating the code quite a bit, and i preferred in the end to keep it simple.
+
 - Old reviews will never be deleted (Reviews will be saved forever in the database)
 - When reviews are filtered for language, the loading new might not add any review on the list just because the new downloaded ones are all in foreign language, causing not a great user experience
 - Not extensive tests 
