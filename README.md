@@ -63,3 +63,5 @@ Response could be for example:
  `{
   "review_id" : 456
 }`
+
+So that review IDs are always managed by the backend, and are consistant through all the app.
