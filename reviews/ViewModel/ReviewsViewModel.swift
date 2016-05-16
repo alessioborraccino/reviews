@@ -158,9 +158,13 @@ class ReviewsViewModel : ReviewsViewModelType {
         if showForeignLanguage {
             return true
         } else {
-            let isForeignLanguageFromRequest = review.isForeignLanguage
+
             let isForeignLanguageFromLanguageCode = review.languageCode != NSLocale.preferredLanguageCode()
-            let reviewIsForeignLanguage = isForeignLanguageFromRequest || isForeignLanguageFromLanguageCode
+
+            // Returns foreign language from german phone also when language code is DE, so i removed the check for now
+            //let isForeignLanguageFromRequest = review.isForeignLanguage
+
+            let reviewIsForeignLanguage = isForeignLanguageFromLanguageCode // || isForeignLanguageFromRequest
             return !reviewIsForeignLanguage
         }
     }
