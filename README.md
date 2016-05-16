@@ -41,6 +41,7 @@ Due to time restrictions, I did not fully implement some of the features, causin
 - Old reviews will never be deleted (Reviews will be saved forever in the database)
 - When reviews are filtered for language, the loading new might not add any review on the list just because the new downloaded ones are all in foreign language, causing not a great user experience
 - Not extensive tests 
+- Not extensive Code documentation
 
 ## What to add
 
