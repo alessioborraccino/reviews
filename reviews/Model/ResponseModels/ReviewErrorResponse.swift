@@ -10,7 +10,7 @@ import ObjectMapper
 
 class ReviewErrorResponse : Mappable {
 
-    var message : String?
+    private(set) var message : String?
 
     convenience required init?(_ map: Map) {
         self.init()

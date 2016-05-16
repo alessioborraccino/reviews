@@ -160,7 +160,6 @@
 		AA3FA53E1CE63FCF004165B5 /* reviews */ = {
 			isa = PBXGroup;
 			children = (
-				AA7413961CE8D09B00F810C3 /* Extensions */,
 				AA74135B1CE646FA00F810C3 /* Main */,
 				AA7413551CE646B500F810C3 /* Model */,
 				AA74136A1CE65FE600F810C3 /* Networking */,
@@ -209,7 +208,6 @@
 		AA7413591CE646E700F810C3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AA7413611CE657D600F810C3 /* Protocols */,
 				AA74137A1CE6951600F810C3 /* Reviews */,
 			);
 			path = View;
@@ -227,6 +225,8 @@
 		AA74135B1CE646FA00F810C3 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				AA7413961CE8D09B00F810C3 /* Extensions */,
+				AA7413611CE657D600F810C3 /* Protocols */,
 				AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */,
 				AA3FA54E1CE63FCF004165B5 /* Info.plist */,
 			);

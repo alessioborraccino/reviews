@@ -10,8 +10,8 @@ import ObjectMapper
 
 class ReviewSuccessResponse : Mappable {
 
-    var reviews : [Review]?
-    var totalReviews : Int = 0
+    private(set) var reviews : [Review]?
+    private(set) var totalReviews : Int = 0
 
     convenience required init?(_ map: Map) {
         self.init()

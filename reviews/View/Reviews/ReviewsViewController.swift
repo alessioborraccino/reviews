@@ -60,7 +60,9 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        reviewsViewModel.loadReviews()
+        if (reviewsViewModel.reviewsCount == 0) {
+            reviewsViewModel.loadReviews()
+        }
     }
 
     private func setDefaultConstraints() {

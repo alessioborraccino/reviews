@@ -53,7 +53,7 @@ class ReviewsViewModel : ReviewsViewModelType {
         return self.filteredReviews(reviews.value).count
     }
 
-    lazy var needsToInsertReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> = {
+    private(set) lazy var needsToInsertReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> = {
         return self.reviews.signal.map { reviews in
             return self.filteredReviews(reviews)
         }.combinePrevious([]).map { previousReviews, newReviews in
@@ -65,21 +65,21 @@ class ReviewsViewModel : ReviewsViewModelType {
         }
     }()
 
-    lazy var needsToUpdateReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> = {
+    private(set) lazy var needsToUpdateReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> = {
         return self.reviews.signal.map { reviews in
             return self.filteredReviews(reviews)
         }.combinePrevious([]).map { previousReviews, newReviews in
             return newReviews.enumerate().filter { (index, _) in
                 return index < previousReviews.count
             }.flatMap { (index,review) in
-                if review == previousReviews[index] {
+                if review.hasSameContentAsOtherReview(previousReviews[index]){
                     return nil 
                 }
                 return NSIndexPath(forRow: index, inSection: 0)
             }
         }
     }()
-    lazy var needsToDeleteReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> = {
+    private(set) lazy var needsToDeleteReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> = {
         return self.reviews.signal.map { reviews in
             return self.filteredReviews(reviews)
         }.combinePrevious([]).map { previousReviews, newReviews in
@@ -92,7 +92,7 @@ class ReviewsViewModel : ReviewsViewModelType {
         }
     }()
 
-    lazy var needsToReloadMessage : Signal<Void,NoError> = {
+    private(set) lazy var needsToReloadMessage : Signal<Void,NoError> = {
         return self.messageCellState.signal.skipRepeats().map({ (state) -> Void in
             return
         })
@@ -118,7 +118,7 @@ class ReviewsViewModel : ReviewsViewModelType {
     // MARK: Public Methods
 
     func loadReviews() {
-        searchReviews(perPageNumber: self.currentReviewPages())
+        searchReviews(ofPageNumber: self.currentReviewPages())
     }
     func cacheReviews() {
         self.reviewEntityManager.cacheReviews(self.reviews.value)
@@ -169,7 +169,7 @@ class ReviewsViewModel : ReviewsViewModelType {
         return reviews.value.count / Constants.reviewsPerPage
     }
 
-    private func searchReviews(numberOfReviews count: Int = Constants.reviewsPerPage, perPageNumber pageNumber: Int) {
+    private func searchReviews(numberOfReviews count: Int = Constants.reviewsPerPage, ofPageNumber pageNumber: Int) {
 
         messageCellState.value = .Loading
 

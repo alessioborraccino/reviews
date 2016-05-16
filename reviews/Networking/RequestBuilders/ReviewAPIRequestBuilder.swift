@@ -42,7 +42,7 @@ enum ReviewAPIRequestBuilder {
         }
     }
 
-    func path() -> String {
+    private func path() -> String {
         switch self {
         case .Reviews(let city, let tour, _, _):
             return city + "/" + tour + "/" + "reviews.json"

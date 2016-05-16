@@ -27,14 +27,14 @@ class Review : Object, Mappable {
 
     // MARK: Realm saved properties 
 
-    dynamic var reviewID : Int = 0
-    dynamic var rating: Int = 0
-    dynamic var title: String = ""
-    dynamic var message: String = ""
-    dynamic var author: String = ""
-    dynamic var date: NSDate = NSDate()
-    dynamic var languageCode: String = "en"
-    dynamic var travelerTypeRaw: String? {
+    private(set) dynamic var reviewID : Int = 0
+    private(set) dynamic var rating: Int = 0
+    private(set) dynamic var title: String = ""
+    private(set) dynamic var message: String = ""
+    private(set) dynamic var author: String = ""
+    private(set) dynamic var date: NSDate = NSDate()
+    private(set) dynamic var languageCode: String = "en"
+    private(set) dynamic var travelerTypeRaw: String? {
         didSet {
             if let value = travelerTypeRaw {
                 self.travelerType = TravelerType(rawValue: value)
@@ -44,8 +44,8 @@ class Review : Object, Mappable {
 
     // MARK: Other Mapped Properties
 
-    var isForeignLanguage: Bool = false
-    var travelerType: TravelerType?
+    private(set) var isForeignLanguage: Bool = false
+    private(set) var travelerType: TravelerType?
 
     // MARK: Initializers
 
@@ -64,7 +64,7 @@ class Review : Object, Mappable {
         self.author = author
         self.isForeignLanguage = foreignLanguage
         self.date = NSDate()
-        self.travelerTypeRaw = self.travelerType?.rawValue
+        self.travelerTypeRaw = TravelerType.Solo.rawValue
     }
 
     // MARK: Realm
@@ -87,6 +87,15 @@ class Review : Object, Mappable {
         date <- (map["date"], GetYourGuideDateTransform())
         languageCode <- map["languageCode"]
         travelerType <- (map["traveler_type"], TravelerTypeTransform())
+    }
+
+    // MARK: Helpers
+
+    func hasSameContentAsOtherReview(review: Review) -> Bool {
+        return review.reviewID == self.reviewID &&
+            review.title == self.title &&
+            review.message == self.message &&
+            review.rating == self.rating
     }
 
     // MARK: Hashable 

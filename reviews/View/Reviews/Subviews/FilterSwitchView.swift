@@ -32,7 +32,7 @@ class FilterSwitchView : UIView {
 
     private lazy var filterOnProperty : MutableProperty<Bool> =  MutableProperty<Bool>(false)
 
-    lazy var didChangeSwitchTo : SignalProducer<Bool,NoError> = {
+    private(set) lazy var didChangeSwitchTo : SignalProducer<Bool,NoError> = {
         return self.filterOnProperty.producer
     }()
 
