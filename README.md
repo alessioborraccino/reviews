@@ -50,3 +50,16 @@ Besides taking care of the limitations described above, it could be useful:
 - Adding more tours and cities
 - Adding more filters (rating filter would be useful)
 - Better UI
+
+## Mock API for submitting reviews
+
+In the app the API call for submitting reviews was not available so i had to mock it. I already wrote it down in the ReviewAPI class but i explicit it here as well:
+
+Request could be for example:
+
+https://www.getyourguide.com/berlin-l17/tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776/addreview.json?author=alessio&title=super&message=super&rating=5&type=solo&date_of_review=date
+
+Response could be for example:
+ `{
+  "review_id" : 456
+}`
