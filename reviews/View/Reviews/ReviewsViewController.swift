@@ -85,9 +85,9 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func bind() {
         let updateReviewsSignal = zip([
-            reviewsViewModel.needsToInsertReviewsAtIndexPaths,
-            reviewsViewModel.needsToUpdateReviewsAtIndexPaths,
-            reviewsViewModel.needsToDeleteReviewsAtIndexPaths
+            reviewsViewModel.needsToInsertReviewsAtIndexes.map { self.reviewIndexPathsFromIndexes($0) },
+            reviewsViewModel.needsToUpdateReviewsAtIndexes.map { self.reviewIndexPathsFromIndexes($0) },
+            reviewsViewModel.needsToDeleteReviewsAtIndexes.map { self.reviewIndexPathsFromIndexes($0) }
         ])
         updateReviewsSignal.observeOn(UIScheduler()).observeNext { [unowned self] paths in
             self.tableView.beginUpdates()
@@ -108,6 +108,15 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
     @objc private func didTapAdd() {
         let addReviewViewController = AddReviewViewController(addReviewViewModel: reviewsViewModel.addReviewViewModel())
         navigationController?.pushViewController(addReviewViewController, animated: true)
+    }
+
+    private func reviewIndexPathsFromIndexes(indexes: [Int]) -> [NSIndexPath] {
+        return indexes.map({ index -> NSIndexPath in
+            return reviewIndexPathFromIndex(index)
+        })
+    }
+    private func reviewIndexPathFromIndex(index: Int) -> NSIndexPath {
+        return NSIndexPath(forRow: index, inSection: ReviewTableSection.Reviews.rawValue)
     }
 }
 

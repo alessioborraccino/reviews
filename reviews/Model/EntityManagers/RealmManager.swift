@@ -8,6 +8,12 @@
 
 import RealmSwift
 
+/**
+ Any class that conforms to this protocol will have an instance of a Realm Database
+
+ - parameters:
+ - Class type
+ */
 protocol RealmManagerType {
     var realm : Realm { get }
 }

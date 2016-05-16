@@ -12,6 +12,10 @@ import Result
 
 extension UITextField {
 
+    /**
+     Wraps the editing Changed event of the text field into a RAC 4 Producer
+
+     */
     func racTextChanged() -> SignalProducer<String?,NoError> {
         return rac_signalForControlEvents(.EditingChanged)
             .toSignalProducer()
@@ -24,6 +28,10 @@ extension UITextField {
 }
 extension UITextView {
 
+    /**
+     Wraps the editing Changed event of the text view into a RAC 4 Producer
+
+     */
     func racTextChanged() -> SignalProducer<String?,NoError> {
         return rac_textSignal()
             .toSignalProducer()

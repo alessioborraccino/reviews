@@ -10,14 +10,29 @@ import Foundation
 import UIKit
 
 extension UITableView {
-  func registerCell<T: UITableViewCell where T: ReusableType>(_: T.Type) {
-    registerClass(T.self, forCellReuseIdentifier: T.identifierForReuse)
-  }
-  
-  func dequeueReusableCell<T: UITableViewCell where T: ReusableType>() -> T {
-    guard let cell = dequeueReusableCellWithIdentifier(T.identifierForReuse) as? T else {
-      fatalError("Could not dequeue cell with identifier: \(T.identifierForReuse)")
+
+    /**
+     Register cells directly using the class name as identifier
+
+     parameters:
+     - Class type
+     */
+
+    func registerCell<T: UITableViewCell where T: ReusableType>(_: T.Type) {
+        registerClass(T.self, forCellReuseIdentifier: T.identifierForReuse)
     }
-    return cell
-  }
+
+    /**
+     Dequeue strongly typed cell directly
+
+     returns:
+     - Strongly typed cell
+     */
+
+    func dequeueReusableCell<T: UITableViewCell where T: ReusableType>() -> T {
+        guard let cell = dequeueReusableCellWithIdentifier(T.identifierForReuse) as? T else {
+            fatalError("Could not dequeue cell with identifier: \(T.identifierForReuse)")
+        }
+        return cell
+    }
 }

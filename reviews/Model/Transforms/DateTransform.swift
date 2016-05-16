@@ -27,7 +27,7 @@ struct DateFormatter {
 }
 
 
-class GetYourGuideDateTransform :TransformType {
+class DateTransform :TransformType {
     func transformFromJSON(value: AnyObject?) -> NSDate? {
         if let dateString = value as? String {
             return DateFormatter.dateFromGetYourGuideString(dateString)
@@ -41,39 +41,7 @@ class GetYourGuideDateTransform :TransformType {
         return nil
     }
 }
-class TravelerTypeTransform :TransformType {
 
-    func transformFromJSON(value: AnyObject?) -> TravelerType? {
-        if let travelerTypeString = value as? String {
-            return TravelerType(rawValue: travelerTypeString)
-        }
-        return nil
-    }
 
-    func transformToJSON(value: TravelerType?) -> String? {
-        if let travelerType = value {
-            return travelerType.rawValue
-        }
-        return nil
-    }
-}
-class RatingTransform : TransformType {
-
-    func transformFromJSON(value: AnyObject?) -> Int? {
-        if let ratingString = value as? String, ratingDouble = Double(ratingString) {
-            return Int(ratingDouble)
-        } else {
-            return 0
-        }
-    }
-
-    func transformToJSON(value: Int?) -> String? {
-        if let rating = value {
-            return String(rating) + ".0"
-        } else {
-            return nil
-        }
-    }
-}
 
 

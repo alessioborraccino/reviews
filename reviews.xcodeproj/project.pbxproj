@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA3EECFE1CE9AEAF008DE34D /* TravelerTypeTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3EECFD1CE9AEAF008DE34D /* TravelerTypeTransform.swift */; };
+		AA3EED001CE9AEC1008DE34D /* RatingTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3EECFF1CE9AEC1008DE34D /* RatingTransform.swift */; };
 		AA3FA5401CE63FCF004165B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */; };
 		AA3FA5421CE63FCF004165B5 /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA3FA5411CE63FCF004165B5 /* ReviewsViewController.swift */; };
 		AA3FA54A1CE63FCF004165B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA3FA5491CE63FCF004165B5 /* Assets.xcassets */; };
@@ -43,7 +45,7 @@
 		AA7413A61CE8FCFA00F810C3 /* UITextField+RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413A51CE8FCFA00F810C3 /* UITextField+RAC.swift */; };
 		AA7413AA1CE9270300F810C3 /* AddReviewViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413A91CE9270300F810C3 /* AddReviewViewModelFactory.swift */; };
 		AA7413AC1CE92E3A00F810C3 /* AddReviewViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413AB1CE92E3A00F810C3 /* AddReviewViewModelTests.swift */; };
-		AA7413AE1CE935DD00F810C3 /* Transforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413AD1CE935DD00F810C3 /* Transforms.swift */; };
+		AA7413AE1CE935DD00F810C3 /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7413AD1CE935DD00F810C3 /* DateTransform.swift */; };
 		D5A9FA3949490248DA18BC99 /* Pods_reviewsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97AF315E7D4592FA74B212ED /* Pods_reviewsTests.framework */; };
 		FF4D0BDC983B6E453BC99CAE /* Pods_reviews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA1EE95EB792973812202CF3 /* Pods_reviews.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +65,8 @@
 		71FF12D6CEBABCDA53C11389 /* Pods-reviewsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviewsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reviewsTests/Pods-reviewsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		97AF315E7D4592FA74B212ED /* Pods_reviewsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_reviewsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		99C3CE84D25F0143D1B8F85D /* Pods-reviewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviewsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-reviewsTests/Pods-reviewsTests.release.xcconfig"; sourceTree = "<group>"; };
+		AA3EECFD1CE9AEAF008DE34D /* TravelerTypeTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelerTypeTransform.swift; sourceTree = "<group>"; };
+		AA3EECFF1CE9AEC1008DE34D /* RatingTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingTransform.swift; sourceTree = "<group>"; };
 		AA3FA53C1CE63FCE004165B5 /* reviews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = reviews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA3FA53F1CE63FCF004165B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AA3FA5411CE63FCF004165B5 /* ReviewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
@@ -103,7 +107,7 @@
 		AA7413A51CE8FCFA00F810C3 /* UITextField+RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+RAC.swift"; sourceTree = "<group>"; };
 		AA7413A91CE9270300F810C3 /* AddReviewViewModelFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewViewModelFactory.swift; sourceTree = "<group>"; };
 		AA7413AB1CE92E3A00F810C3 /* AddReviewViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddReviewViewModelTests.swift; sourceTree = "<group>"; };
-		AA7413AD1CE935DD00F810C3 /* Transforms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transforms.swift; sourceTree = "<group>"; };
+		AA7413AD1CE935DD00F810C3 /* DateTransform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTransform.swift; sourceTree = "<group>"; };
 		EA1EE95EB792973812202CF3 /* Pods_reviews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_reviews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC198DD19AE6587233A2C431 /* Pods-reviews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reviews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reviews/Pods-reviews.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -140,11 +144,11 @@
 		AA3FA5331CE63FCE004165B5 = {
 			isa = PBXGroup;
 			children = (
+				AA3FA53E1CE63FCF004165B5 /* reviews */,
+				AA3FA5561CE63FCF004165B5 /* reviewsTests */,
 				1052083F01C1733B27EFD8D3 /* Frameworks */,
 				C666D6E0C05BFD399F644892 /* Pods */,
 				AA3FA53D1CE63FCE004165B5 /* Products */,
-				AA3FA53E1CE63FCF004165B5 /* reviews */,
-				AA3FA5561CE63FCF004165B5 /* reviewsTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -357,7 +361,9 @@
 		AA7413AF1CE9392300F810C3 /* Transforms */ = {
 			isa = PBXGroup;
 			children = (
-				AA7413AD1CE935DD00F810C3 /* Transforms.swift */,
+				AA7413AD1CE935DD00F810C3 /* DateTransform.swift */,
+				AA3EECFD1CE9AEAF008DE34D /* TravelerTypeTransform.swift */,
+				AA3EECFF1CE9AEC1008DE34D /* RatingTransform.swift */,
 			);
 			path = Transforms;
 			sourceTree = "<group>";
@@ -579,6 +585,7 @@
 				AA7413811CE728B000F810C3 /* RatingView.swift in Sources */,
 				AA7413731CE67C9F00F810C3 /* MessageCellViewModel.swift in Sources */,
 				AA3FA5421CE63FCF004165B5 /* ReviewsViewController.swift in Sources */,
+				AA3EECFE1CE9AEAF008DE34D /* TravelerTypeTransform.swift in Sources */,
 				AA7413911CE78D4800F810C3 /* MessageCellViewModelFactory.swift in Sources */,
 				AA7413671CE65BF100F810C3 /* ReviewsViewModel.swift in Sources */,
 				AA7413851CE74CE900F810C3 /* ReviewsSuccessResponse.swift in Sources */,
@@ -592,8 +599,9 @@
 				AA74137D1CE71FF900F810C3 /* Colors.swift in Sources */,
 				AA7413A21CE8F2E900F810C3 /* AddReviewViewController.swift in Sources */,
 				AA7413691CE65D3300F810C3 /* ReviewCellViewModel.swift in Sources */,
-				AA7413AE1CE935DD00F810C3 /* Transforms.swift in Sources */,
+				AA7413AE1CE935DD00F810C3 /* DateTransform.swift in Sources */,
 				AA7413AA1CE9270300F810C3 /* AddReviewViewModelFactory.swift in Sources */,
+				AA3EED001CE9AEC1008DE34D /* RatingTransform.swift in Sources */,
 				AA74136E1CE6695700F810C3 /* ReviewEntityManager.swift in Sources */,
 				AA7413A61CE8FCFA00F810C3 /* UITextField+RAC.swift in Sources */,
 				AA7413651CE65A2400F810C3 /* UITableView+ReusableType.swift in Sources */,

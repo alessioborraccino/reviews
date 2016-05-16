@@ -159,18 +159,25 @@ class AddReviewViewController: UIViewController {
             if let _ = review {
                 self.navigationController?.popViewControllerAnimated(true)
             } else {
-                let alert = UIAlertController(title: "Sorry", message: "Could not send it", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+                self.showNetworkError()
             }
         }
         viewModel.didTryToSaveNotValidReview.observeOn(UIScheduler()).observeNext { [unowned self]  in
-            let alert = UIAlertController(title: "Sorry", message: "You need to write in all the fields!", preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: "Got it", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.showFieldsNotValidError()
         }
     }
 
+    private func showNetworkError() {
+        showAlertWithTitle("Sorry", message: "There were connection problems!", actionTitle: "OK")
+    }
+    private func showFieldsNotValidError() {
+        showAlertWithTitle("Sorry", message: "You need to write in all the fields!", actionTitle: "Got it")
+    }
+    private func showAlertWithTitle(title: String, message: String, actionTitle: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     @objc private func didTapSave() {
         viewModel.addReview()
     }

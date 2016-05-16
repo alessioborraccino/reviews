@@ -32,6 +32,10 @@ class ReviewAPI : ReviewAPIType {
 
     // MARK: Dependencies
 
+    /**
+     Used to get maximum Review ID to give back. Would not be needed in a production environment
+
+     */
     private let reviewEntityManager : ReviewEntityManagerType
 
     init(reviewEntityManager: ReviewEntityManagerType = ReviewEntityManager()) {
@@ -43,7 +47,7 @@ class ReviewAPI : ReviewAPIType {
 
         return SignalProducer { observer, disposable in
 
-            let request = ReviewAPIRequestBuilder.Reviews(
+            let request = ReviewAPIRequestBuilder.SearchReviews(
                 city: self.city,
                 tour: self.tour,
                 count: count,

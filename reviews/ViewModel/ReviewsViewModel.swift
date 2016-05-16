@@ -11,9 +11,9 @@ import Result
 
 protocol ReviewsViewModelType {
 
-    var needsToInsertReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> { get }
-    var needsToUpdateReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> { get }
-    var needsToDeleteReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> { get }
+    var needsToInsertReviewsAtIndexes : Signal<[Int],NoError> { get }
+    var needsToUpdateReviewsAtIndexes : Signal<[Int],NoError> { get }
+    var needsToDeleteReviewsAtIndexes : Signal<[Int],NoError> { get }
     var needsToReloadMessage : Signal<Void,NoError> { get }
 
     var reviewsCount : Int { get }
@@ -53,19 +53,19 @@ class ReviewsViewModel : ReviewsViewModelType {
         return self.filteredReviews(reviews.value).count
     }
 
-    private(set) lazy var needsToInsertReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> = {
+    private(set) lazy var needsToInsertReviewsAtIndexes : Signal<[Int],NoError> = {
         return self.reviews.signal.map { reviews in
             return self.filteredReviews(reviews)
         }.combinePrevious([]).map { previousReviews, newReviews in
             return newReviews.enumerate().filter { (index, _) in
                 return index >= previousReviews.count
             }.map { (index,_) in
-                return NSIndexPath(forRow: index, inSection: 0)
+                return index
             }
         }
     }()
 
-    private(set) lazy var needsToUpdateReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> = {
+    private(set) lazy var needsToUpdateReviewsAtIndexes : Signal<[Int],NoError> = {
         return self.reviews.signal.map { reviews in
             return self.filteredReviews(reviews)
         }.combinePrevious([]).map { previousReviews, newReviews in
@@ -75,11 +75,11 @@ class ReviewsViewModel : ReviewsViewModelType {
                 if review.hasSameContentAsOtherReview(previousReviews[index]){
                     return nil 
                 }
-                return NSIndexPath(forRow: index, inSection: 0)
+                return index
             }
         }
     }()
-    private(set) lazy var needsToDeleteReviewsAtIndexPaths : Signal<[NSIndexPath],NoError> = {
+    private(set) lazy var needsToDeleteReviewsAtIndexes : Signal<[Int],NoError> = {
         return self.reviews.signal.map { reviews in
             return self.filteredReviews(reviews)
         }.combinePrevious([]).map { previousReviews, newReviews in
@@ -87,7 +87,7 @@ class ReviewsViewModel : ReviewsViewModelType {
             return previousReviews.enumerate().filter { (index,_) in
                 return index >= newReviewsCount
             }.map { (index,_) in
-                return NSIndexPath(forRow: index, inSection: 0)
+                return index
             }
         }
     }()
@@ -135,7 +135,7 @@ class ReviewsViewModel : ReviewsViewModelType {
     }
     func addReviewViewModel() -> AddReviewViewModelType {
         let addReviewViewModel = addReviewViewModelFactory.model()
-        addReviewViewModel.didSaveReview.observeNext { review in
+        addReviewViewModel.didSaveReview.observeNext { [unowned self] review in
             if let review = review {
                 self.updateAndSortReviewsWithNewReviews([review])
             }

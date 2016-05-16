@@ -50,6 +50,8 @@ func ==(lhs: MessageCellState, rhs: MessageCellState) -> Bool {
     }
 }
 
+// MARK: MessageCellViewModel
+
 protocol MessageCellViewModelType {
     var message : String { get }
     var isLoading : Bool { get }

@@ -55,15 +55,23 @@ class Review : Object, Mappable {
         self.travelerTypeRaw = self.travelerType?.rawValue
     }
 
-    convenience init(id: Int, rating: Int = 5, title: String = "Title", message: String = "Message", author: String = "Author", foreignLanguage: Bool = false) {
+    convenience init(id: Int,
+                     rating: Int = 5,
+                     title: String = "Title",
+                     message: String = "Message",
+                     author: String = "Author",
+                     date: NSDate = NSDate(),
+                     languageCode: String = NSLocale.preferredLanguageCode(),
+                     foreignLanguage: Bool = false) {
         self.init()
         self.reviewID = id
         self.rating = rating
-        self.message = message
         self.title = title
+        self.message = message
         self.author = author
-        self.isForeignLanguage = foreignLanguage
         self.date = NSDate()
+        self.languageCode = languageCode
+        self.isForeignLanguage = foreignLanguage
         self.travelerTypeRaw = TravelerType.Solo.rawValue
     }
 
@@ -84,7 +92,7 @@ class Review : Object, Mappable {
         message <- map["message"]
         author <- map["author"]
         isForeignLanguage <- map["foreignLanguage"]
-        date <- (map["date"], GetYourGuideDateTransform())
+        date <- (map["date"], DateTransform())
         languageCode <- map["languageCode"]
         travelerType <- (map["traveler_type"], TravelerTypeTransform())
     }
