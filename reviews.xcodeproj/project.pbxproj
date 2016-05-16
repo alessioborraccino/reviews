@@ -186,10 +186,10 @@
 		AA7413551CE646B500F810C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AA7413AF1CE9392300F810C3 /* Transforms */,
 				AA7413871CE7547800F810C3 /* Entities */,
 				AA74136F1CE66A2A00F810C3 /* EntityManagers */,
 				AA7413861CE7534000F810C3 /* ResponseModels */,
+				AA7413AF1CE9392300F810C3 /* Transforms */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -359,7 +359,7 @@
 			children = (
 				AA7413AD1CE935DD00F810C3 /* Transforms.swift */,
 			);
-			name = Transforms;
+			path = Transforms;
 			sourceTree = "<group>";
 		};
 		C666D6E0C05BFD399F644892 /* Pods */ = {
