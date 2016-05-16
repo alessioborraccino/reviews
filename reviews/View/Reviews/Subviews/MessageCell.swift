@@ -11,6 +11,8 @@ import SnapKit
 
 class MessageCell : UITableViewCell, ReusableType {
 
+    // MARK: Subviews 
+
     private lazy var containerView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.whiteColor()
@@ -34,6 +36,8 @@ class MessageCell : UITableViewCell, ReusableType {
         return indicator
     }()
 
+    // MARK: Initializers
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(containerView)
@@ -45,6 +49,8 @@ class MessageCell : UITableViewCell, ReusableType {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Constraints 
 
     private func setDefaultConstraints() {
 
@@ -64,6 +70,8 @@ class MessageCell : UITableViewCell, ReusableType {
         }
     }
 
+    // MARK: Methods 
+    
     func bind(messageCellViewModel viewModel: MessageCellViewModelType) {
         if viewModel.isLoading {
             messageLabel.text = ""

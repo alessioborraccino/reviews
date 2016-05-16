@@ -11,7 +11,11 @@ import ReactiveCocoa
 
 class AddReviewViewController: UIViewController {
 
+    // MARK: ViewModel 
+
     private var viewModel : AddReviewViewModelType
+
+    // MARK: SubViews 
 
     private lazy var scrollView : UIScrollView =  {
         return UIScrollView()
@@ -66,6 +70,8 @@ class AddReviewViewController: UIViewController {
         return textView
     }()
 
+    // MARK: Initializers 
+
     init(addReviewViewModel: AddReviewViewModelType) {
         self.viewModel = addReviewViewModel
         super.init(nibName: nil, bundle: nil)
@@ -73,6 +79,8 @@ class AddReviewViewController: UIViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: View Methods 
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,6 +144,7 @@ class AddReviewViewController: UIViewController {
         }
     }
 
+    // MARK: Binders
     private func bind() {
         authorTextField.racTextChanged().startWithNext { [unowned self] text in
             self.viewModel.author = text ?? ""
@@ -154,6 +163,11 @@ class AddReviewViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             }
+        }
+        viewModel.didTryToSaveNotValidReview.observeOn(UIScheduler()).observeNext { [unowned self]  in
+            let alert = UIAlertController(title: "Sorry", message: "You need to write in all the fields!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Got it", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
     }
 

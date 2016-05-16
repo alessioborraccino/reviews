@@ -13,7 +13,11 @@ import ReactiveCocoa
 
 class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    // MARK: ViewModel 
+
     private let reviewsViewModel : ReviewsViewModelType
+
+    // MARK: SubViews 
 
     private lazy var foreignLanguageFilterSwitch : FilterSwitchView =  {
         let filterSwitch = FilterSwitchView()
@@ -32,14 +36,18 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
         return tableView
     }()
 
-    init<T: ReviewsViewModelType>(reviewsViewModel: T) {
+    // MARK: Initializers
+
+    init(reviewsViewModel: ReviewsViewModelType) {
         self.reviewsViewModel = reviewsViewModel
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
+    // MARK: View Methods 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Reviews"
@@ -71,6 +79,8 @@ class ReviewsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
 
+    // MARK: Binders 
+    
     private func bind() {
         let updateReviewsSignal = zip([
             reviewsViewModel.needsToInsertReviewsAtIndexPaths,

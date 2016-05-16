@@ -31,7 +31,7 @@ class ReviewsViewModel : ReviewsViewModelType {
     // MARK: Constants
 
     private struct Constants {
-        static let reviewsPerPage = 5
+        static let reviewsPerPage = 10
     }
 
     // MARK: Dependencies
@@ -42,25 +42,12 @@ class ReviewsViewModel : ReviewsViewModelType {
     private let messageCellViewModelFactory : MessageCellViewModelFactoryType
     private let addReviewViewModelFactory : AddReviewViewModelFactoryType
 
-    // MARK: Model Properties
+    // MARK: Reactive Model Properties
+
+    private var showForeignLanguage = true
 
     private var reviews = MutableProperty<[Review]>([])
     private var messageCellState = MutableProperty<MessageCellState>(.WaitingToLoad)
-    private var showForeignLanguage = true
-
-    init(reviewEntityManager: ReviewEntityManagerType = ReviewEntityManager(),
-         reviewAPI: ReviewAPIType = ReviewAPI(),
-         reviewCellViewModelFactory: ReviewCellViewModelFactoryType = ReviewCellViewModelFactory(),
-         messageCellViewModelFactory: MessageCellViewModelFactoryType = MessageCellViewModelFactory(),
-         addReviewViewModelFactory: AddReviewViewModelFactoryType = AddReviewViewModelFactory()
-        ) {
-        self.reviewEntityManager = reviewEntityManager
-        self.reviewAPI = reviewAPI
-        self.reviewCellViewModelFactory = reviewCellViewModelFactory
-        self.messageCellViewModelFactory = messageCellViewModelFactory
-        self.addReviewViewModelFactory = addReviewViewModelFactory
-        self.reviews.value = self.reviewEntityManager.allReviews()
-    }
 
     var reviewsCount : Int {
         return self.filteredReviews(reviews.value).count
@@ -111,6 +98,23 @@ class ReviewsViewModel : ReviewsViewModelType {
         })
     }()
 
+    // MARK: Initializer
+
+    init(reviewEntityManager: ReviewEntityManagerType = ReviewEntityManager(),
+         reviewAPI: ReviewAPIType = ReviewAPI(),
+         reviewCellViewModelFactory: ReviewCellViewModelFactoryType = ReviewCellViewModelFactory(),
+         messageCellViewModelFactory: MessageCellViewModelFactoryType = MessageCellViewModelFactory(),
+         addReviewViewModelFactory: AddReviewViewModelFactoryType = AddReviewViewModelFactory()
+        ) {
+        self.reviewEntityManager = reviewEntityManager
+        self.reviewAPI = reviewAPI
+        self.reviewCellViewModelFactory = reviewCellViewModelFactory
+        self.messageCellViewModelFactory = messageCellViewModelFactory
+        self.addReviewViewModelFactory = addReviewViewModelFactory
+
+        self.reviews.value = self.reviewEntityManager.allReviews()
+    }
+
     // MARK: Public Methods
 
     func loadReviews() {
@@ -120,8 +124,8 @@ class ReviewsViewModel : ReviewsViewModelType {
         self.reviewEntityManager.cacheReviews(self.reviews.value)
     }
     func showForeignLanguageReviews(show: Bool) {
-        self.showForeignLanguage = show 
-        self.reviews.value = self.reviews.value
+        self.showForeignLanguage = show
+        self.refreshIndexPaths()
     }
     func reviewCellViewModelForIndex(index: Int) -> ReviewCellViewModelType {
         return reviewCellViewModelFactory.model(review: filteredReviews(reviews.value)[index])
@@ -133,19 +137,22 @@ class ReviewsViewModel : ReviewsViewModelType {
         let addReviewViewModel = addReviewViewModelFactory.model()
         addReviewViewModel.didSaveReview.observeNext { review in
             if let review = review {
-                self.updateReviewsWithNewReviews([review])
+                self.updateAndSortReviewsWithNewReviews([review])
             }
         }
         return addReviewViewModel
     }
     // MARK: Private Methods
 
+    private func refreshIndexPaths() {
+        // Triggers Tableview Reload
+        self.reviews.value = self.reviews.value
+    }
     private func filteredReviews(reviews: [Review]) -> [Review] {
        return reviews.filter { review in
             self.isValidLanguage(review: review)
         }
     }
-
     private func isValidLanguage(review review: Review) -> Bool {
 
         if showForeignLanguage {
@@ -169,18 +176,17 @@ class ReviewsViewModel : ReviewsViewModelType {
         reviewAPI.reviews(count: count, pageNumber: pageNumber).start { [unowned self] event in
             switch event {
             case .Next(let reviews):
-                self.updateReviewsWithNewReviews(reviews)
+                self.updateAndSortReviewsWithNewReviews(reviews)
                 self.messageCellState.value = .WaitingToLoad
             case .Failed(let error):
-                let cachedReviews = self.reviewEntityManager.allReviews()
-                self.updateMessageCellStateWithError(error, isShowingCachedReviews: !cachedReviews.isEmpty)
+                self.updateMessageCellStateWithError(error, isTableEmpty: self.reviews.value.isEmpty)
             default:
                 break
             }
         }
     }
 
-    private func updateReviewsWithNewReviews(reviews: [Review]) {
+    private func updateAndSortReviewsWithNewReviews(reviews: [Review]) {
         var newReviews = self.reviews.value
         newReviews.appendContentsOf(reviews)
         newReviews.sortInPlace { (first, second) -> Bool in
@@ -189,10 +195,10 @@ class ReviewsViewModel : ReviewsViewModelType {
         self.reviews.value = newReviews
     }
 
-    private func updateMessageCellStateWithError(error: ReviewAPIError, isShowingCachedReviews: Bool) {
+    private func updateMessageCellStateWithError(error: ReviewAPIError, isTableEmpty: Bool) {
         switch error {
         case .NetworkFailed, .ParsingFailed:
-            if !isShowingCachedReviews {
+            if isTableEmpty {
                 self.messageCellState.value = .NoConnection
             } else {
                 self.messageCellState.value = .NoConnectionCached

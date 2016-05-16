@@ -11,35 +11,48 @@ import ObjectMapper
 
 enum TravelerType : String {
     case Solo = "solo"
-    case Couple
-    case FamilyYoung
-    case FamilyOld
-    case Friends
+    case Couple = "couple"
+    case FamilyYoung = "family_young"
+    case FamilyOld = "family_old"
+    case Friends = "friends"
 }
+
+// MARK : Equatable
 
 func == (lhs: Review, rhs: Review) -> Bool {
     return lhs.reviewID == rhs.reviewID
 }
 
 class Review : Object, Mappable {
+
+    // MARK: Realm saved properties 
+
     dynamic var reviewID : Int = 0
     dynamic var rating: Int = 0
     dynamic var title: String = ""
     dynamic var message: String = ""
     dynamic var author: String = ""
-    dynamic var isForeignLanguage: Bool = false
     dynamic var date: NSDate = NSDate()
     dynamic var languageCode: String = "en"
+    dynamic var travelerTypeRaw: String? {
+        didSet {
+            if let value = travelerTypeRaw {
+                self.travelerType = TravelerType(rawValue: value)
+            }
+        }
+    }
+
+    // MARK: Other Mapped Properties
+
+    var isForeignLanguage: Bool = false
     var travelerType: TravelerType?
 
-    private dynamic var travelerTypeRaw: String?
+    // MARK: Initializers
 
-    override var hashValue: Int {
-        return self.reviewID.hashValue
-    }
     convenience required init?(_ map: Map) {
         self.init()
         mapping(map)
+        self.travelerTypeRaw = self.travelerType?.rawValue
     }
 
     convenience init(id: Int, rating: Int = 5, title: String = "Title", message: String = "Message", author: String = "Author", foreignLanguage: Bool = false) {
@@ -51,69 +64,34 @@ class Review : Object, Mappable {
         self.author = author
         self.isForeignLanguage = foreignLanguage
         self.date = NSDate()
+        self.travelerTypeRaw = self.travelerType?.rawValue
     }
+
+    // MARK: Realm
     override static func primaryKey() -> String? {
         return "reviewID"
     }
     override class func ignoredProperties() -> [String] {
         return ["isForeignLanguage"]
     }
+
+    // MARK: ObjectMapper 
+    
     func mapping(map: Map) {
         reviewID <- map["review_id"]
-        rating <- (map["rating"], transformRatingIntString())
+        rating <- (map["rating"], RatingTransform())
         title <- map["title"]
         message <- map["message"]
         author <- map["author"]
         isForeignLanguage <- map["foreignLanguage"]
-        date <- (map["date"], transformDateString())
+        date <- (map["date"], GetYourGuideDateTransform())
         languageCode <- map["languageCode"]
-        travelerType <- (map["traveler_type"], transformTravelerTypeString())
+        travelerType <- (map["traveler_type"], TravelerTypeTransform())
     }
 
-    private func transformDateString() -> TransformOf<NSDate, String> {
-        return TransformOf<NSDate, String>(fromJSON: { string in
-            if let value = string  {
-                return NSDate.dateFromGetYourGuideString(value)
-            } else {
-                return NSDate()
-            }
-        }, toJSON: { date in
-            if let value = date {
-                return NSDate.getYourGuideStringFromDate(value)
-            } else {
-                return nil
-            }
-        })
-    }
-    private func transformRatingIntString() -> TransformOf<Int, String> {
-        return TransformOf<Int, String>(fromJSON: { string in
-            if let value = string , double = Double(value) {
-                return Int(double)
-            } else {
-                return 0
-            }
-        }, toJSON: { rating in
-            if let value = rating {
-                return String(value) + ".0"
-            } else {
-                return nil
-            }
-        })
-    }
+    // MARK: Hashable 
 
-    private func transformTravelerTypeString() -> TransformOf<TravelerType?, String> {
-        return TransformOf<TravelerType?, String>(fromJSON: { string in
-            if let value = string {
-                return TravelerType(rawValue: value)
-            } else {
-                return nil
-            }
-        }, toJSON: { travelerType in
-            if let value = travelerType {
-                return value?.rawValue
-            } else {
-                return nil
-            }
-        })
+    override var hashValue: Int {
+        return self.reviewID.hashValue
     }
 }

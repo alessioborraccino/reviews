@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: MessageCellState 
+
 enum MessageCellState : CustomStringConvertible, Equatable {
     case WaitingToLoad
     case Loading
@@ -22,14 +24,16 @@ enum MessageCellState : CustomStringConvertible, Equatable {
         case .Loading:
             return "Loading..."
         case .NoConnection:
-            return "No Internet Connection. Try again later"
+            return "No Connection. Try again"
         case .NoConnectionCached:
-            return "Internet Problems. Reviews might not be up to date"
+            return "No Connection. Reviews might not be up to date"
         case .APIError(let message):
             return message
         }
     }
 }
+
+// MARK: MessageCellState Equatable
 
 func ==(lhs: MessageCellState, rhs: MessageCellState) -> Bool {
     switch (lhs, rhs) {

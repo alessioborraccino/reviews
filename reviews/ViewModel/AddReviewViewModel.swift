@@ -23,13 +23,19 @@ protocol AddReviewViewModelType {
 
 class AddReviewViewModel : AddReviewViewModelType {
 
+    // MARK: Dependencies
+
     private let reviewAPI : ReviewAPIType
+
+    // MARK: Properties
 
     private var id: Int?
     var author: String = ""
     var title: String = ""
     var message: String = ""
     var rating: Int = 5
+
+    // MARK: Reactive 
 
     private let (didSaveReviewOrNil, didSaveReviewSink) = Signal<Review?, NoError>.pipe()
     private(set) lazy var didSaveReview : Signal<Review?,NoError> = {
@@ -41,9 +47,13 @@ class AddReviewViewModel : AddReviewViewModelType {
         return self.notValidReview
     }()
 
+    // MARK: Initializers 
+
     init(reviewAPI : ReviewAPIType = ReviewAPI()) {
         self.reviewAPI = reviewAPI
     }
+
+    // MARK: Public Methods
 
     func addReview() {
 
@@ -66,6 +76,8 @@ class AddReviewViewModel : AddReviewViewModelType {
         }
     }
 
+    // MARK: Helpers
+    
     private func areFieldsValid() -> Bool {
         return !author.isEmpty && !title.isEmpty && !message.isEmpty
     }

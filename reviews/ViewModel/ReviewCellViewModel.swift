@@ -25,7 +25,7 @@ class ReviewCellViewModel : ReviewCellViewModelType {
     init(review: Review) {
         self.title = review.title
         self.message = review.message
-        self.footer = review.author + "-" + NSDate.getYourGuideStringFromDate(review.date)
+        self.footer = review.author + " - " + DateFormatter.getYourGuideStringFromDate(review.date)
         self.rating = review.rating 
     }
 }

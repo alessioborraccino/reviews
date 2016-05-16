@@ -11,6 +11,7 @@ import SnapKit
 
 class ReviewCell : UITableViewCell, ReusableType {
 
+    // MARK: UI Constants
     private struct UI {
         static let topBottomPadding : CGFloat = 10.0
         static let padding : CGFloat = 5.0
@@ -20,6 +21,8 @@ class ReviewCell : UITableViewCell, ReusableType {
         static let messageFont = AppFont.regular
         static let footerFont = AppFont.hint
     }
+
+    // MARK: Subviews 
 
     private lazy var titleLabel : UILabel = {
         let label = UILabel()
@@ -45,6 +48,8 @@ class ReviewCell : UITableViewCell, ReusableType {
         return label
     }()
 
+    // MARK: Initializers 
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .None
@@ -58,6 +63,8 @@ class ReviewCell : UITableViewCell, ReusableType {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: Constraints 
 
     private func setDefaultConstraints() {
 
@@ -90,6 +97,8 @@ class ReviewCell : UITableViewCell, ReusableType {
             make.trailing.equalTo(titleLabel.snp_trailing)
         }
     }
+
+    // MARK: Public Methods 
 
     func bind(reviewCellViewModel: ReviewCellViewModelType) {
         titleLabel.text = reviewCellViewModel.title

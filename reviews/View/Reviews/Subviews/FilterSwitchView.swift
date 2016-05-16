@@ -13,6 +13,8 @@ import Result
 
 class FilterSwitchView : UIView {
 
+    // MARK: Subviews 
+
     private lazy var titleLabel : UILabel = {
         let label = UILabel()
         label.textColor = AppColor.textDark
@@ -26,11 +28,15 @@ class FilterSwitchView : UIView {
         return filterSwitch
     }()
 
+    // MARK: Reactive 
+
     private lazy var filterOnProperty : MutableProperty<Bool> =  MutableProperty<Bool>(false)
 
     lazy var didChangeSwitchTo : SignalProducer<Bool,NoError> = {
         return self.filterOnProperty.producer
     }()
+
+    // MARK: Initializers
 
     override init(frame: CGRect) {
         super.init(frame: CGRectZero)
@@ -46,6 +52,7 @@ class FilterSwitchView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Constraints
     private func setDefaultConstraints() {
 
         let padding = 5
@@ -63,13 +70,12 @@ class FilterSwitchView : UIView {
         }
     }
 
+    // MARK: Methods 
+
     @objc private func didTap() {
         filterOnProperty.value = !filterOnProperty.value
     }
     func configureWithTitle(title: String) {
         titleLabel.text = title
-    }
-    func setOn(on: Bool) {
-        filterSwitch.on = on
     }
 }

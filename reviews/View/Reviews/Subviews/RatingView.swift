@@ -11,6 +11,8 @@ import SnapKit
 
 class RatingView : UIView {
 
+    // MARK: Subviews 
+
     private lazy var stars : [UIImageView] = {
         var starArray = [UIImageView]()
         for _ in 0..<self.totalRating {
@@ -23,6 +25,8 @@ class RatingView : UIView {
 
     private let totalRating : Int
 
+    // MARK: Initializers
+
     init(totalRating: Int) {
         self.totalRating = totalRating
         super.init(frame: CGRectZero)
@@ -34,6 +38,20 @@ class RatingView : UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Public Methods
+
+    func configureWithRating(rating: Int) {
+        for (index, star) in stars.enumerate() {
+            if (index + 1) <= rating {
+                star.tintColor = AppColor.main
+            } else {
+                star.tintColor = AppColor.main.colorWithAlphaComponent(0.5)
+            }
+        }
+    }
+
+    // MARK: Helpers
+    
     private func addStars() {
         for star in stars {
             addSubview(star)
@@ -55,16 +73,6 @@ class RatingView : UIView {
                 }
                 previousStar = star
             })
-        }
-    }
-
-    func configureWithRating(rating: Int) {
-        for (index, star) in stars.enumerate() {
-            if (index + 1) <= rating {
-                star.tintColor = AppColor.main
-            } else {
-                star.tintColor = AppColor.main.colorWithAlphaComponent(0.5)
-            }
         }
     }
 }

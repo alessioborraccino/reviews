@@ -38,6 +38,7 @@ class ReviewAPI : ReviewAPIType {
         self.reviewEntityManager = reviewEntityManager
     }
 
+    // MARK: Public Methods
     func reviews(count count: Int, pageNumber: Int) -> SignalProducer<[Review],ReviewAPIError> {
 
         return SignalProducer { observer, disposable in
@@ -73,23 +74,21 @@ class ReviewAPI : ReviewAPIType {
                 author: review.author,
                 title: review.title, 
                 message: review.message,
-                rating: review.rating, //TODO Formatting
-                date: NSDate() 
+                rating: review.rating,
+                date: NSDate(),
+                travelerType: review.travelerType
              ).URLRequest(host: self.host)
-            /*
-            Alamofire.request(request).validate().responseJSON(completionHandler: { (response: Response<AnyObject, NSError>) in
 
-                if let _ = response.result.error {
-                    observer.sendFailed(.NetworkFailed)
-                } else if let success = Mapper<AddReviewResponse>().map(response.result.value), reviews = success.reviews {
-                    observer.sendNext(reviews)
-                } else if let error = Mapper<AddReviewErrorResponse>().map(response.result.value), message = error.message {
-                    observer.sendFailed(.APIError(message: message))
-                } else {
-                    observer.sendFailed(.ParsingFailed)
-                }
-                observer.sendCompleted()
-            })*/
+            //Should send request to backend, which will return the id for the review 
+
+            //Request should be for example: 
+            //https://www.getyourguide.com/berlin-l17/tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776/addreview.json?author=alessio&title=super&message=super&rating=5&type=solo&date_of_review=date
+
+            //Response would be as a json for example:
+            // {
+            //    "review_id" : 456
+            // }
+
             let id = self.reviewEntityManager.maxReviewID() + 1 //Should be managed by backend
             observer.sendNext(id)
             observer.sendCompleted()
